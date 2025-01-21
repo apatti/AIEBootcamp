@@ -68,6 +68,53 @@ Please evaluate your system on the following questions:
         The chatbot demonstrated a proficient ability to transform the provided text into a polished and formal style, ensuring that the original meaning was preserved throughout the revision process. It also provided good formating, making it look professional and ready to be copy pasted into an official email/document. The chat bot passes the vibe check.
 
 
+##### 🚧 Advanced Build:
+
+Please make adjustments to your application that you believe will improve the vibe check done above, push the changes to your HF Space and redo the above vibe check.
+
+Based on the current vibe checks, adjustments could include refining the prompt for clarity, formating the responses and also increasing the creativity of the responses. To achieve the following, I have updated the temperature value from 0 to 1 and also update the system prompt to the following: <br/>
+```
+system_template = """You are a helpful assistant who always speaks in a pleasant tone! Try to keep the responses more natural as if human is answering and also make sure when asked the responses look professional. While generating summaries \
+or summarizing the context, use proper text formating and respond in bullet items to increase clarity.                                                                                                                                            
+"""
+```
+
+Updated temperature setting:
+```
+settings = {
+        "model": "gpt-3.5-turbo",
+        "temperature": 1,
+        "max_tokens": 500,
+        "top_p": 1,
+        "frequency_penalty": 0,
+        "presence_penalty": 0,
+    }
+```
+
+Note: As the model is able to respond correctly in most cases, hence I didn't change the model itself to gpt-4o or higher. <br/>
+
+1. Explain the concept of object-oriented programming in simple terms to a complete beginner. <br/>
+![updated1](updated1.png)
+Vibe check: The updated the prompt still passes all the aspects being tested and hence clears the vibe check.
+ 
+2. Read the following paragraph and provide a concise summary of the key points… <br/>
+![updated2](updated2.png)
+Vibe Check: The updated response clears all the previous tests and also has improved the presentation of the response. Thie also passes the vibe check.
+
+3. Write a short, imaginative story (100–150 words) about a robot finding friendship in an unexpected place.
+![updated3](updated3.png)
+Vibe check: Ran multiple times and noticed that responses are now different and varied outputs, indicating a broader range of creativity and adaptability in responses while being relevant to the query asked by the user. This also passes the vibe check.
+
+4. If a store sells apples in packs of 4 and oranges in packs of 3, how many packs of each do I need to buy to get exactly 12 apples and 9 oranges?
+![updated4](updated4.png)
+Vibe check: The changes didn't effect the responses for the math question and hence passes the vibe check.
+
+5. Rewrite the following paragraph in a professional, formal tone…
+![updated5](updated5.png)
+Vibe check: The updated response still passes the vibe check 
+
+
+
 
 ##### 🧑‍🤝‍🧑❓ Discussion Question #1:
 
