@@ -12,6 +12,7 @@ dependencies = [
     "openai>=1.59.7",
     "pandas>=2.2.3",
     "plotly>=5.24.1",
+    "pypdf>=5.1.0",
     "python-dotenv>=1.0.1",
     "scikit-learn>=1.6.1",
     "scipy>=1.15.1",
