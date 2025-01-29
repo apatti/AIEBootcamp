@@ -31,6 +31,9 @@ In today's assignment, we'll be creating an Agentic LangChain RAG Application.
     4. LangGraph for the "Patterns" of GenAI
     
 <<<<<<< ours
+<<<<<<< ours
+=======
+>>>>>>> theirs
 The notebook Colab link is located [here](https://colab.research.google.com/drive/12zip1q07ABPGWTF7CrTskoPdf6N0ZKEb?usp=sharing)
 
 ### HARDMODE
@@ -38,8 +41,11 @@ The notebook Colab link is located [here](https://colab.research.google.com/driv
 You are tasked to create an agent with 3 tools that can research a specific domain of your choice.
 
 You must deploy the resultant agent with a Chainlit (or Custom) frontend.
+<<<<<<< ours
 =======
 The notebook Colab link is located [here](https://colab.research.google.com/drive/10Hn0XTKkxy05ZjaHSIpsYdZu2rGkAnBS?usp=sharing)
+>>>>>>> theirs
+=======
 >>>>>>> theirs
 
 ## Ship 🚢
