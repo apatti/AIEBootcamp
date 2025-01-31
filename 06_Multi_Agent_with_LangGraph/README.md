@@ -8,7 +8,7 @@
 
 | 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| [Session 6: Pre-Work](https://www.notion.so/Session-6-Multi-Agent-Applications-with-LangGraph-184cd547af3d808cbcdeeed381559dc8?pvs=4#184cd547af3d81d5b68de91e7aded8ac)| [Session 6: Multi-Agent Applications with LangGraph](https://www.notion.so/Session-6-Multi-Agent-Applications-with-LangGraph-184cd547af3d808cbcdeeed381559dc8) | Coming Soon! | Coming Soon! | You Are Here!  | Coming Soon! | [AIE5 Feedback 1/30](https://forms.gle/CQpew16p4YKAtXZT6) |
+| [Session 6: Pre-Work](https://www.notion.so/Session-6-Multi-Agent-Applications-with-LangGraph-184cd547af3d808cbcdeeed381559dc8?pvs=4#184cd547af3d81d5b68de91e7aded8ac)| [Session 6: Multi-Agent Applications with LangGraph](https://www.notion.so/Session-6-Multi-Agent-Applications-with-LangGraph-184cd547af3d808cbcdeeed381559dc8) | [Recording](https://us02web.zoom.us/rec/share/lBGI73HPoNMW7MBjvX1CKXcBF3nbZn4h4GfU20HSAkqxFbjl1ND1los5XwXSDfwZ.r5arGZjTYOgxBO4f) (J!cJYhk4) | [Session 6:  Multi-Agent with LangGraph](https://www.canva.com/design/DAGcITD8I_E/0q7OhXagz-AfWNfp5RjDdA/edit?utm_content=DAGcITD8I_E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) | [06_Multi_Agent_with_LangGraph](https://github.com/AI-Maker-Space/AIE5/tree/main/06_Multi_Agent_with_LangGraph) | [Session 6:  Multi-Agent with LangGraph](https://forms.gle/3jF8X3NLTsD8uG4C6) | [AIE5 Feedback 1/30](https://forms.gle/CQpew16p4YKAtXZT6) |
 
 In today's assignment, we'll be creating a MULTI-Agentic LangGraph Application.
 
