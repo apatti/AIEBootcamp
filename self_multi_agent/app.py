@@ -64,9 +64,46 @@ async def process_graph_updates():
     final_llm_metadata = messages[-1][0].response_metadata
 '''
 
+@cl.set_starters
+async def set_starters():
+    return [
+        cl.Starter(
+            label="Fremont",
+            message="Fremont"
+        ),
+        cl.Starter(
+            label="San Ramon",
+            message="San Ramon"
+        ),
+        cl.Starter(
+            label="Dublin",
+            message="Dublin"
+        ),
+        cl.Starter(
+            label="Pleasanton",
+            message="Pleasanton"
+        ),
+        cl.Starter(
+            label="Mumbai",
+            message="Mumbai"
+        ),
+        cl.Starter(
+            label="Hyderabad",
+            message="Hyderabad"
+        )
+    ]
+
 @cl.on_chat_start
 async def on_chat_start():
     cl.user_session.set("compiled_graph", compiled_graph)
+    intro_text = "Tired of guessing if it's a good day to play? The Dinking Forecast uses AI and weather data to find the ideal playing window for optimal pickleball conditions.\n Enter the city name to get the best time to play pickleball."
+    elements = [
+        cl.Text(name="The Dinking Forecast", content=intro_text, display="inline")
+    ]
+    await cl.Message(
+        content="",
+        elements=elements,
+    ).send()
 
 @cl.on_message
 async def on_message(message: cl.Message):
