@@ -1,3 +1,4 @@
+
 from dotenv import load_dotenv
 from langchain_core.tools import tool
 from typing_extensions import TypedDict
@@ -7,6 +8,9 @@ import openmeteo_requests
 import requests_cache
 import pandas as pd
 from retry_requests import retry
+
+import logging
+logger = logging.getLogger(__name__)
 
 
 # Setup the Open-Meteo API client with cache and retry on error
@@ -36,7 +40,7 @@ class WeatherData(TypedDict):
 @tool
 def get_weather(lat: float, lon: float) -> WeatherData:
     """Tool that returns the real-time weather updates for a given latitude and longitude"""
-    print(f"Getting weather for {lat} - {lon}")
+    logger.info(f"Getting weather for {lat} - {lon}")
     weather_params["latitude"] = lat
     weather_params["longitude"] = lon
     responses = openmeteo.weather_api(url, params=weather_params)[0]
@@ -58,19 +62,19 @@ def get_weather(lat: float, lon: float) -> WeatherData:
     ).strftime("%Y-%m-%d %H:%M:%S")}
     
     weatherInfo: WeatherData = {
-        "time": hourly_data["date"],
-        "temperature": hourly_temperature_2m,
-        "relative_humidity": hourly_relative_humidity_2m,
-        "dew": hourly_dew_point_2m,
-        "apparent_temperature": hourly_apparent_temperature,
-        "showers": hourly_showers,
-        "wind_speed": hourly_wind_speed_10m,
-        "visibility": hourly_visibility
+        "time": hourly_data["date"][5:23],
+        "temperature": hourly_temperature_2m[5:23],
+        "relative_humidity": hourly_relative_humidity_2m[5:23],
+        "dew": hourly_dew_point_2m[5:23],
+        "apparent_temperature": hourly_apparent_temperature[5:23],
+        "showers": hourly_showers[5:23],
+        "wind_speed": hourly_wind_speed_10m[5:23],
+        "visibility": hourly_visibility[5:23]
     }
 
     return weatherInfo
 
 
-#if __name__ == "__main__":
-#    load_dotenv()
-#    print(get_weather(37.7749, -122.4194))
+if __name__ == "__main__":
+    load_dotenv()
+    print(get_weather(37.7749, -122.4194))
