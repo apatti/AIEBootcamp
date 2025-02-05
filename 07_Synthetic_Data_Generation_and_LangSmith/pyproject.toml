@@ -1,0 +1,17 @@
+[project]
+name = "07-synthetic-data-generation-and-langsmith"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jupyter>=1.1.1",
+    "langchain-community>=0.3.16",
+    "langchain-openai>=0.3.3",
+    "langchain-qdrant>=0.2.0",
+    "langgraph>=0.2.69",
+    "numpy>=2.2.2",
+    "ragas==0.2.10",
+    "unstructured>=0.14.8",
+    "nltk==3.8.1",
+]
