@@ -1,4 +1,4 @@
-<p align = "center" draggable=”false” ><img src="https://github.com/AI-Maker-Space/LLM-Dev-101/assets/37101144/d1343317-fa2f-41e1-8af1-1dbb18399719" 
+<p alAign = "center" draggable=”false” ><img src="https://github.com/AI-Maker-Space/LLM-Dev-101/assets/37101144/d1343317-fa2f-41e1-8af1-1dbb18399719" 
      width="200px"
      height="auto"/>
 </p>
@@ -62,4 +62,4 @@ Shout out to @AIMakerspace !
 #LangChain #QuestionAnswering #RetrievalAugmented #Innovation #AI #TechMilestone
 
 Feel free to reach out if you're curious or would like to collaborate on similar projects! 🤝🔥
-```
+```BB
