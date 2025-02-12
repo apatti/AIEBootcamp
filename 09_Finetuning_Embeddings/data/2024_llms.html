@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://simonwillison.net/2024/Dec/31/llms-in-2024/">
+<title>Things we learned about LLMs in 2024</title>
+<script defer data-domain="simonwillison.net" src="https://plausible.io/js/plausible.js"></script>
+<link rel="alternate" type="application/atom+xml" title="Atom" href="/atom/everything/">
+<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+<link rel="webmention" href="https://webmention.io/simonwillison.net/webmention">
+<link rel="pingback" href="https://webmention.io/simonwillison.net/xmlrpc">
+<meta name="author" content="Simon Willison">
+<meta property="og:site_name" content="Simon Willison’s Weblog">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.simonwillison.net/static/2024/arena-dec-2024.jpg">
+
+<meta name="twitter:creator" content="@simonw">
+<meta property="og:url" content="https://simonwillison.net/2024/Dec/31/llms-in-2024/">
+<meta property="og:title" content="Things we learned about LLMs in 2024">
+<meta property="og:image" content="https://static.simonwillison.net/static/2024/arena-dec-2024.jpg">
+<meta property="og:type" content="article">
+<meta property="og:description" content="A lot has happened in the world of Large Language Models over the course of 2024. Here’s a review of things we figured out about the field in the past …">
+<meta property="og:updated_time" content="1735668451">
+
+
+
+<script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+
+
+</head>
+<body class="smallhead">
+
+<div id="smallhead">
+  <div id="smallhead-inner">
+    <h1><a href="/">Simon Willison’s Weblog</a></h1>
+    <a id="smallhead-about" href="/about/#subscribe">Subscribe</a>
+  </div>
+</div><!-- #smallhead -->
+
+<div id="wrapper">
+<div id="primary">
+
+<div class="entry entryPage">
+
+
+<div data-permalink-context="/2024/Dec/31/llms-in-2024/">
+<h2>Things we learned about LLMs in 2024</h2>
+<p class="mobile-date">31st December 2024</p>
+
+
+
+<p>A <em>lot</em> has happened in the world of Large Language Models over the course of 2024. Here’s a review of things we figured out about the field in the past twelve months, plus my attempt at identifying key themes and pivotal moments.</p>
+<p>This is a sequel to <a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/">my review of 2023</a>.</p>
+<p>In this article:</p>
+<ul>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#the-gpt-4-barrier-was-comprehensively-broken">The GPT-4 barrier was comprehensively broken</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#some-of-those-gpt-4-models-run-on-my-laptop">Some of those GPT-4 models run on my laptop</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#llm-prices-crashed-thanks-to-competition-and-increased-efficiency">LLM prices crashed, thanks to competition and increased efficiency</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#multimodal-vision-is-common-audio-and-video-are-starting-to-emerge">Multimodal vision is common, audio and video are starting to emerge</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#voice-and-live-camera-mode-are-science-fiction-come-to-life">Voice and live camera mode are science fiction come to life</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#prompt-driven-app-generation-is-a-commodity-already">Prompt driven app generation is a commodity already</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#universal-access-to-the-best-models-lasted-for-just-a-few-short-months">Universal access to the best models lasted for just a few short months</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#-agents-still-haven-t-really-happened-yet">“Agents” still haven’t really happened yet</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#evals-really-matter">Evals really matter</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#apple-intelligence-is-bad-apple-s-mlx-library-is-excellent">Apple Intelligence is bad, Apple’s MLX library is excellent</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#the-rise-of-inference-scaling-reasoning-models">The rise of inference-scaling “reasoning” models</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#was-the-best-currently-available-llm-trained-in-china-for-less-than-6m-">Was the best currently available LLM trained in China for less than $6m?</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#the-environmental-impact-got-better">The environmental impact got better</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#the-environmental-impact-got-much-much-worse">The environmental impact got much, much worse</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#the-year-of-slop">The year of slop</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#synthetic-training-data-works-great">Synthetic training data works great</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#llms-somehow-got-even-harder-to-use">LLMs somehow got even harder to use</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#knowledge-is-incredibly-unevenly-distributed">Knowledge is incredibly unevenly distributed</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#llms-need-better-criticism">LLMs need better criticism</a></li>
+  <li><a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/#everything-tagged-llms-on-my-blog-in-2024">Everything tagged “llms” on my blog in 2024</a></li>
+</ul>
+<h4 id="the-gpt-4-barrier-was-comprehensively-broken">The GPT-4 barrier was comprehensively broken</h4>
+<p>In my December 2023 review I wrote about how <a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#cant-build-gpt4">We don’t yet know how to build GPT-4</a>—OpenAI’s best model was almost a year old at that point, yet no other AI lab had produced anything better. What did OpenAI know that the rest of us didn’t?</p>
+<p>I’m relieved that this has changed completely in the past twelve months. 18 organizations now have models on the <a href="https://lmarena.ai/?leaderboard">Chatbot Arena Leaderboard</a> that rank higher than the original GPT-4 from March 2023 (<code>GPT-4-0314</code> on the board)—70 models in total.</p>
+<p><img src="https://static.simonwillison.net/static/2024/arena-dec-2024.jpg" alt="Screenshot of a comparison table showing AI model rankings. Table headers: Rank (UB), Rank (StyleCtrl), Model, Arena Score, 95% CI, Votes, Organization, License. Shows 12 models including GLM-4-0520, Llama-3-70B-Instruct, Gemini-1.5-Flash-8B-Exp-0827, with rankings, scores, and licensing details. Models range from rank 52-69 with Arena scores between 1186-1207." style="max-width: 100%;"></p>
+<p>The earliest of those was <strong>Google’s Gemini 1.5 Pro</strong>, released in February. In addition to producing GPT-4 level outputs, it introduced several brand new capabilities to the field—most notably its 1 million (and then later 2 million) token input context length, and the ability to input video.</p>
+<p>I wrote about this at the time in <a href="https://simonwillison.net/2024/Feb/21/gemini-pro-video/">The killer app of Gemini Pro 1.5 is video</a>, which earned me a short appearance <a href="https://www.youtube.com/watch?v=XEzRZ35urlk&amp;t=606s">as a talking head</a> in the Google I/O opening keynote in May.</p>
+<p>Gemini 1.5 Pro also illustrated one of the key themes of 2024: <strong>increased context lengths</strong>. Last year most models accepted 4,096 or 8,192 tokens, with the notable exception of Claude 2.1 which <a href="https://www.anthropic.com/news/claude-2-1">accepted 200,000</a>. Today every serious provider has a 100,000+ token model, and Google’s Gemini series accepts up to 2 million.</p>
+<p>Longer inputs dramatically increase the scope of problems that can be solved with an LLM: you can now throw in an entire book and ask questions about its contents, but more importantly you can feed in a <em>lot</em> of example code to help the model correctly solve a coding problem. LLM use-cases that involve long inputs are far more interesting to me than short prompts that rely purely on the information already baked into the model weights. Many of my <a href="https://simonwillison.net/tags/tools/">tools</a> were built using this pattern.</p>
+<p>Getting back to models that beat GPT-4: Anthropic’s Claude 3 series <a href="https://simonwillison.net/2024/Mar/4/claude-3/">launched in March</a>, and Claude 3 Opus quickly became my new favourite daily-driver. They upped the ante even more in June with <a href="https://simonwillison.net/2024/Jun/20/claude-35-sonnet/">the launch of Claude 3.5 Sonnet</a>—a model that is still my favourite six months later (though it got a significant upgrade <a href="https://www.anthropic.com/news/3-5-models-and-computer-use">on October 22</a>, confusingly keeping the same 3.5 version number. Anthropic fans have since taken to calling it Claude 3.6).</p>
+<p>Then there’s the rest. If you browse <a href="https://lmarena.ai/?leaderboard">the Chatbot Arena leaderboard</a> today—still the most useful single place to get <a href="https://simonwillison.net/2024/Jul/14/pycon/#pycon-2024.016.jpeg">a vibes-based evaluation</a> of models—you’ll see that GPT-4-0314 has fallen to around 70th place. The 18 organizations with higher scoring models are Google, OpenAI, Alibaba, Anthropic, Meta, Reka AI, 01 AI, Amazon, Cohere, DeepSeek, Nvidia, Mistral, NexusFlow, Zhipu AI, xAI, AI21 Labs, Princeton and Tencent.</p>
+<p>Training a GPT-4 beating model was a huge deal in 2023. In 2024 it’s an achievement that isn’t even particularly notable, though I personally still celebrate any time a new organization joins that list.</p>
+<h4 id="some-of-those-gpt-4-models-run-on-my-laptop">Some of those GPT-4 models run on my laptop</h4>
+<p>My personal laptop is a 64GB M2 MacBook Pro from 2023. It’s a powerful machine, but it’s also nearly two years old now—and crucially it’s the same laptop I’ve been using ever since I first ran an LLM on my computer back in March 2023 (see <a href="https://simonwillison.net/2023/Mar/11/llama/">Large language models are having their Stable Diffusion moment</a>).</p>
+<p>That same laptop that could just about run a GPT-3-class model in March last year has now run multiple GPT-4 class models! Some of my notes on that:</p>
+<ul>
+<li>
+<a href="https://simonwillison.net/2024/Nov/12/qwen25-coder/">Qwen2.5-Coder-32B is an LLM that can code well that runs on my Mac</a> talks about Qwen2.5-Coder-32B in November—an Apache 2.0 licensed model!</li>
+<li>
+<a href="https://simonwillison.net/2024/Dec/9/llama-33-70b/">I can now run a GPT-4 class model on my laptop</a> talks about running Meta’s Llama 3.3 70B (released in December)</li>
+</ul>
+<p>This remains astonishing to me. I thought a model with the capabilities and output quality of GPT-4 needed a datacenter class server with one or more $40,000+ GPUs.</p>
+<p>These models take up enough of my 64GB of RAM that I don’t run them often—they don’t leave much room for anything else.</p>
+<p>The fact that they run at all is a testament to the incredible training and inference performance gains that we’ve figured out over the past year. It turns out there was a <em>lot</em> of low-hanging fruit to be harvested in terms of model efficiency. I expect there’s still more to come.</p>
+<p>Meta’s Llama 3.2 models deserve a special mention. They may not be GPT-4 class, but at 1B and 3B sizes they punch <em>massively</em> above their weight. I run Llama 3.2 3B on my iPhone using the free <a href="https://apps.apple.com/us/app/mlc-chat/id6448482937">MLC Chat iOS app</a> and it’s a shockingly capable model for its tiny (&lt;2GB) size. Try firing it up and asking it for “a plot outline of a Netflix Christmas movie where a data journalist falls in love with a local ceramacist”. Here’s what I got, at a respectable 20 tokens per second:</p>
+<p><img src="https://static.simonwillison.net/static/2024/mlc-chat-christmas.jpg" alt="MLC Chat: Llama - [System] Ready to chat. a plot outline of a Netflix Christmas movie where a data journalist falls in love with a local ceramacist. Show as Markdown is turned on. Here's a plot outline for a Netflix Christmas movie: Title: &quot;Love in the Clay&quot; Plot Outline: We meet our protagonist, JESSICA, a data journalist who has just returned to her hometown of Willow Creek, a small, charming town nestled in the snow-covered mountains. She's back to work on a story about the town's history and the effects of gentrification on the local community." style="max-width: 100%;"></p>
+<p><a href="https://gist.github.com/simonw/7db8d582fdb0c133d7e05205c305d5bd">Here’s the rest of the transcript</a>. It’s bland and generic, but my phone can pitch bland and generic Christmas movies to Netflix now!</p>
+<h4 id="llm-prices-crashed-thanks-to-competition-and-increased-efficiency">LLM prices crashed, thanks to competition and increased efficiency</h4>
+<p>The past twelve months have seen a dramatic collapse in the cost of running a prompt through the top tier hosted LLMs.</p>
+<p>In December 2023 (here’s the <a href="https://web.archive.org/web/20231214190432/https://openai.com/pricing">Internet Archive for the OpenAI pricing page</a>) OpenAI were charging $30/million input tokens for GPT-4, $10/mTok for the then-new GPT-4 Turbo and $1/mTok for GPT-3.5 Turbo.</p>
+<p>Today $30/mTok gets you OpenAI’s most expensive model, o1. GPT-4o is $2.50 (12x cheaper than GPT-4) and GPT-4o mini is $0.15/mTok—nearly 7x cheaper than GPT-3.5 and <em>massively</em> more capable.</p>
+<p>Other model providers charge even less. Anthropic’s Claude 3 Haiku (from March, but still their cheapest model) is $0.25/mTok. Google’s Gemini 1.5 Flash is $0.075/mTok and their Gemini 1.5 Flash 8B is $0.0375/mTok—that’s 27x cheaper than GPT-3.5 Turbo last year.</p>
+<p>I’ve been tracking these pricing changes under my <a href="https://simonwillison.net/tags/llm-pricing/">llm-pricing tag</a>.</p>
+<p>These price drops are driven by two factors: increased competition and increased efficiency. The efficiency thing is <em>really</em> important for everyone who is concerned about the environmental impact of LLMs. These price drops tie directly to how much energy is being used for running prompts.</p>
+<p>There’s still plenty to worry about with respect to the environmental impact of the great AI datacenter buildout, but a lot of the concerns over the energy cost of individual prompts are no longer credible.</p>
+<p>Here’s a fun napkin calculation: how much would it cost to generate short descriptions of every one of the 68,000 photos in my personal photo library using Google’s Gemini 1.5 Flash 8B (<a href="https://developers.googleblog.com/en/gemini-15-flash-8b-is-now-generally-available-for-use/">released in October</a>), their cheapest model?</p>
+<p>Each photo would need 260 input tokens and around 100 output tokens.</p>
+<p>260 * 68,000 = 17,680,000 input tokens<br>
+17,680,000 * $0.0375/million = $0.66<br>
+100 * 68,000 = 6,800,000 output tokens<br>
+6,800,000 * $0.15/million = $1.02<br></p>
+<p>That’s a total cost of <strong>$1.68</strong> to process 68,000 images. That’s so absurdly cheap I had to run the numbers three times to confirm I got it right.</p>
+<p>How good are those descriptions? Here’s what I got from this command:</p>
+<pre><code>llm -m gemini-1.5-flash-8b-latest describe -a IMG_1825.jpeg
+</code></pre>
+<p>Against this photo of butterflies at the California Academy of Sciences:</p>
+<p><img src="https://static.simonwillison.net/static/2024/butterflies.jpg" alt="A photo of two butterflies feeding on a red tray" style="max-width: 100%;"></p>
+<blockquote>
+<p>A shallow dish, likely a hummingbird or butterfly feeder, is red.  Pieces of orange slices of fruit are visible inside the dish.</p>
+<p>Two butterflies are positioned in the feeder, one is a dark brown/black butterfly with white/cream-colored markings.  The other is a large, brown butterfly with patterns of lighter brown, beige, and black markings, including prominent eye spots. The larger brown butterfly appears to be feeding on the fruit.</p>
+</blockquote>
+<p>260 input tokens, 92 output tokens. Cost approximately 0.0024 cents (that’s less than a 400th of a cent).</p>
+<p>This increase in efficiency and reduction in price is my single favourite trend from 2024. I want the utility of LLMs at a fraction of the energy cost and it looks like that’s what we’re getting.</p>
+<h4 id="multimodal-vision-is-common-audio-and-video-are-starting-to-emerge">Multimodal vision is common, audio and video are starting to emerge</h4>
+<p>My butterfly example above illustrates another key trend from 2024: the rise of multi-modal LLMs.</p>
+<p>A year ago the single most notable example of these was GPT-4 Vision, <a href="https://openai.com/index/new-models-and-developer-products-announced-at-devday/">released at OpenAI’s DevDay in November 2023</a>. Google’s multi-modal Gemini 1.0 was announced <a href="https://blog.google/technology/ai/google-gemini-ai/">on December 7th 2023</a> so it also (just) makes it into the 2023 window.</p>
+<p>In 2024, almost every significant model vendor released multi-modal models. We saw the Claude 3 series from Anthropic <a href="https://simonwillison.net/2024/Mar/4/claude-3/">in March</a>, Gemini 1.5 Pro <a href="https://simonwillison.net/2024/Apr/10/gemini-15-pro-public-preview/">in April</a> (images, audio and video), then September brought <a href="https://simonwillison.net/2024/Sep/4/qwen2-vl/">Qwen2-VL</a> and Mistral’s <a href="https://simonwillison.net/2024/Sep/11/pixtral/">Pixtral 12B</a> and Meta’s <a href="https://simonwillison.net/2024/Sep/25/llama-32/">Llama 3.2 11B and 90B vision models</a>. We got audio input and output <a href="https://simonwillison.net/2024/Oct/18/openai-audio/">from OpenAI in October</a>, then November saw <a href="https://simonwillison.net/2024/Nov/28/smolvlm/">SmolVLM from Hugging Face</a> and December saw image and video models <a href="https://simonwillison.net/2024/Dec/4/amazon-nova/">from Amazon Nova</a>.</p>
+<p>In October I <a href="https://simonwillison.net/2024/Oct/29/llm-multi-modal/">upgraded my LLM CLI tool to support multi-modal models via attachments</a>. It now has plugins for a whole collection of different vision models.</p>
+<p>I think people who complain that LLM improvement has slowed are often missing the enormous advances in these multi-modal models. Being able to run prompts against images (and audio and video) is a fascinating new way to apply these models.</p>
+<h4 id="voice-and-live-camera-mode-are-science-fiction-come-to-life">Voice and live camera mode are science fiction come to life</h4>
+<p>The audio and live video modes that have started to emerge deserve a special mention.</p>
+<p>The ability to talk to ChatGPT first arrived <a href="https://openai.com/index/chatgpt-can-now-see-hear-and-speak/">in September 2023</a>, but it was mostly an illusion: OpenAI used their excellent Whisper speech-to-text model and a new text-to-speech model (creatively named <a href="https://platform.openai.com/docs/models#tts">tts-1</a>) to enable conversations with the ChatGPT mobile apps, but the actual model just saw text.</p>
+<p>The <a href="https://openai.com/index/hello-gpt-4o/">May 13th</a> announcement of GPT-4o included a demo of a brand new voice mode, where the true multi-modal GPT-4o (the o is for “omni”) model could accept audio input and output incredibly realistic sounding speech without needing separate TTS or STT models.</p>
+<p>The demo also sounded <a href="https://www.nytimes.com/2024/05/20/technology/scarlett-johansson-openai-statement.html">conspicuously similar to Scarlett Johansson</a>... and after she complained the voice from the demo, Skye, never made it to a production product.</p>
+<p>The delay in releasing the new voice mode after the initial demo caused quite a lot of confusion. I wrote about that in <a href="https://simonwillison.net/2024/May/15/chatgpt-in-4o-mode/">ChatGPT in “4o” mode is not running the new features yet</a>.</p>
+<p>When ChatGPT Advanced Voice mode finally <em>did</em> roll out (a slow roll from August through September) it was spectacular. I’ve been using it extensively on walks with my dog and it’s amazing how much the improvement in intonation elevates the material. I’ve also had a lot of fun <a href="https://simonwillison.net/2024/Oct/18/openai-audio/">experimenting with the OpenAI audio APIs</a>.</p>
+<p>Even more fun: Advanced Voice mode can do accents! Here’s what happened when I told it <a href="https://simonwillison.net/2024/Oct/26/russian-spanish-pelican/">I need you to pretend to be a California brown pelican with a very thick Russian accent, but you talk to me exclusively in Spanish</a>.</p>
+<p><audio controls="controls" style="width: 100%">
+<source src="https://static.simonwillison.net/static/2024/russian-pelican-in-spanish.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio></p>
+<p>OpenAI aren’t the only group with a multi-modal audio model. Google’s Gemini also accepts audio input, and the Google Gemini apps can speak in a similar way to ChatGPT now. Amazon also pre-announced voice mode <a href="https://simonwillison.net/2024/Dec/4/amazon-nova/#gamoa">for Amazon Nova</a>, but that’s meant to roll out in Q1 of 2025.</p>
+<p>Google’s NotebookLM, released <a href="https://simonwillison.net/2024/Sep/29/notebooklm-audio-overview/">in September</a>, took audio output to a new level by producing spookily realistic conversations between two “podcast hosts” about anything you fed into their tool. They later added custom instructions, so naturally <a href="https://simonwillison.net/2024/Oct/17/notebooklm-pelicans/">I turned them into pelicans</a>:</p>
+<audio controls="controls" style="width: 100%">
+<source src="https://static.simonwillison.net/static/2024/video-scraping-pelicans.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
+<p>The most recent twist, again from December (December was <a href="https://simonwillison.net/2024/Dec/20/december-in-llms-has-been-a-lot/">a lot</a>) is live video. ChatGPT voice mode now provides the option to share your camera feed with the model and talk about what you can see in real time. Google Gemini have <a href="https://simonwillison.net/2024/Dec/11/gemini-2/#the-streaming-api-is-next-level">a preview of the same feature</a>, which they managed to ship the day before ChatGPT did.</p>
+<lite-youtube videoid="mpgWH9KulUU" title="Gemini 2.0 streaming demo" playlabel="Play: Gemini 2.0 streaming demo">
+</lite-youtube>
+<p style="margin-top: 1em">These abilities are just a few weeks old at this point, and I don’t think their impact has been fully felt yet. If you haven’t tried them out yet you really should.</p>
+<p>Both Gemini and OpenAI offer API access to these features as well. OpenAI started with <a href="https://simonwillison.net/2024/Oct/2/not-digital-god/#gpt-4o-audio-via-the-new-websocket-realtime-api">a WebSocket API</a> that was quite challenging to use, but in December they announced <a href="https://simonwillison.net/2024/Dec/17/openai-webrtc/">a new WebRTC API</a> which is much easier to get started with. Building a web app that a user can talk to via voice is <em>easy</em> now!</p>
+<h4 id="prompt-driven-app-generation-is-a-commodity-already">Prompt driven app generation is a commodity already</h4>
+<p>This was possible with GPT-4 in 2023, but the value it provides became evident in 2024.</p>
+<p>We already knew LLMs were <a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#code-best-application">spookily good at writing code</a>. If you prompt them right, it turns out they can build you <strong>a full interactive application</strong> using HTML, CSS and JavaScript (and tools like React if you wire up some extra supporting build mechanisms)—often in a single prompt.</p>
+<p>Anthropic kicked this idea into high gear when they released <strong>Claude Artifacts</strong>, a groundbreaking new feature that was initially slightly lost in the noise due to being described half way through <a href="https://www.anthropic.com/news/claude-3-5-sonnet">their announcement of the incredible Claude 3.5 Sonnet</a>.</p>
+<p>With Artifacts, Claude can write you an on-demand interactive application and then <em>let you use it</em> directly inside the Claude interface.</p>
+<p>Here’s my <a href="https://tools.simonwillison.net/extract-urls">Extract URLs</a> app, entirely <a href="https://gist.github.com/simonw/0a7d0ddeb0fdd63a844669475778ca06">generated by Claude</a>:</p>
+<p><img src="https://static.simonwillison.net/static/2024/claude-artifacts/extract-urls.jpg" alt="Extract URLs tool. Content pasted. URLs extracted. Shows a list of extracted URLs." style="max-width: 100%;"></p>
+<p>I’ve found myself using this <em>a lot</em>. I noticed how much I was relying on it in October and wrote <a href="https://simonwillison.net/2024/Oct/21/claude-artifacts/">Everything I built with Claude Artifacts this week</a>, describing 14 little tools I had put together in a seven day period.</p>
+<p>Since then, a whole bunch of other teams have built similar systems. GitHub announced their version of this—<a href="https://simonwillison.net/2024/Oct/30/copilot-models/">GitHub Spark</a>—in October. Mistral Chat <a href="https://mistral.ai/news/mistral-chat/">added it as a feature called Canvas</a> in November.</p>
+<p>Steve Krouse from Val Town <a href="https://simonwillison.net/2024/Oct/31/cerebras-coder/">built a version of it against Cerebras</a>, showcasing how a 2,000 token/second LLM can iterate on an application with changes visible in less than a second.</p>
+<p>Then in December, the Chatbot Arena team introduced <a href="https://simonwillison.net/2024/Dec/16/webdev-arena/">a whole new leaderboard</a> for this feature, driven by users building the same interactive app twice with two different models and voting on the answer. Hard to come up with a more convincing argument that this feature is now a commodity that can be effectively implemented against all of the leading models.</p>
+<p>I’ve been tinkering with a version of this myself for my Datasette project, with the goal of letting users use prompts to build and iterate on custom widgets and data visualizations against their own data. I also figured out a similar pattern for <a href="https://simonwillison.net/2024/Dec/19/one-shot-python-tools/">writing one-shot Python programs, enabled by uv</a>.</p>
+<p>This prompt-driven custom interface feature is so powerful and easy to build (once you’ve figured out the gnarly details of browser sandboxing) that I expect it to show up as a feature in a wide range of products in 2025.</p>
+<h4 id="universal-access-to-the-best-models-lasted-for-just-a-few-short-months">Universal access to the best models lasted for just a few short months</h4>
+<p>For a few short months this year all three of the best available models—GPT-4o, Claude 3.5 Sonnet and Gemini 1.5 Pro—were freely available to most of the world.</p>
+<p>OpenAI made GPT-4o free for all users <a href="https://openai.com/index/hello-gpt-4o/">in May</a>, and Claude 3.5 Sonnet was freely available from <a href="https://www.anthropic.com/news/claude-3-5-sonnet">its launch in June</a>. This was a momentus change, because for the previous year free users had mostly been restricted to GPT-3.5 level models, meaning new users got a <em>very</em> inaccurate mental model of what a capable LLM could actually do.</p>
+<p>That era appears to have ended, likely permanently, with OpenAI’s launch of <a href="https://openai.com/index/introducing-chatgpt-pro/">ChatGPT Pro</a>. This $200/month subscription service is the only way to access their most capable model, o1 Pro.</p>
+<p>Since the trick behind the o1 series (and the future models it will undoubtedly inspire) is to expend more compute time to get better results, I don’t think those days of free access to the best available models are likely to return.</p>
+<h4 id="-agents-still-haven-t-really-happened-yet">“Agents” still haven’t really happened yet</h4>
+<p>I find the term “agents” extremely frustrating. It lacks a single, clear and widely understood meaning... but the people who use the term never seem to acknowledge that.</p>
+<p>If you tell me that you are building “agents”, you’ve conveyed almost no information to me at all. Without reading your mind I have no way of telling which of the dozens of possible definitions you are talking about.</p>
+<p>The two main categories I see are people who think AI agents are obviously things that go and act on your behalf—the travel agent model—and people who think in terms of LLMs that have been given access to tools which they can run in a loop as part of solving a problem. The term “autonomy” is often thrown into the mix too, again without including a clear definition.</p>
+<p>(I also <a href="https://til.simonwillison.net/twitter/collecting-replies">collected 211 definitions</a> on Twitter a few months ago—here they are <a href="https://lite.datasette.io/?json=https://gist.github.com/simonw/bdc7b894eedcfd54f0a2422ea8feaa80#/data/raw">in Datasette Lite</a>—and had <code>gemini-exp-1206</code> <a href="https://gist.github.com/simonw/beaa5f90133b30724c5cc1c4008d0654">attempt to summarize them</a>.)</p>
+<p>Whatever the term may mean, agents still have that feeling of perpetually “coming soon”.</p>
+<p>Terminology aside, I remain skeptical as to their utility based, once again, on the challenge of <strong>gullibility</strong>. LLMs believe anything you tell them. Any systems that attempts to make meaningful decisions on your behalf will run into the same roadblock: how good is a travel agent, or a digital assistant, or even a research tool if it can’t distinguish truth from fiction?</p>
+<p>Just the other day Google Search was caught <a href="https://simonwillison.net/2024/Dec/29/encanto-2/">serving up an entirely fake description</a> of the non-existant movie “Encanto 2”. It turned out to be summarizing an imagined movie listing from <a href="https://ideas.fandom.com/wiki/Encanto_2:_A_New_Generation">a fan fiction wiki</a>.</p>
+<p><a href="https://simonwillison.net/series/prompt-injection/">Prompt injection</a> is a natural consequence of this gulibility. I’ve seen precious little progress on tackling that problem in 2024, and we’ve been talking about it <a href="https://simonwillison.net/2022/Sep/12/prompt-injection/">since September 2022</a>.</p>
+<p>I’m beginning to see the most popular idea of “agents” as dependent on AGI itself. A model that’s robust against gulliblity is a very tall order indeed.</p>
+<h4 id="evals-really-matter">Evals really matter</h4>
+<p>Anthropic’s <a href="https://twitter.com/amandaaskell/status/1866207266761760812">Amanda Askell</a> (responsible for much of <a href="https://simonwillison.net/2024/Jun/8/claudes-character/">the work behind Claude’s Character</a>):</p>
+<blockquote>
+<p>The boring yet crucial secret behind good system prompts is test-driven development. You don’t write down a system prompt and find ways to test it. You write down tests and find a system prompt that passes them.</p>
+</blockquote>
+<p>It’s become abundantly clear over the course of 2024 that writing good automated evals for LLM-powered systems is <strong>the skill</strong> that’s most needed to build useful applications on top of these models. If you have a strong eval suite you can adopt new models faster, iterate better and build more reliable and useful product features than your competition.</p>
+<p>Vercel’s <a href="https://twitter.com/cramforce/status/1860436022347075667">Malte Ubl</a>:</p>
+<blockquote>
+<p>When <a href="https://twitter.com/v0">@v0</a> first came out we were paranoid about protecting the prompt with all kinds of pre and post processing complexity.</p>
+<p>We completely pivoted to let it rip. A prompt without the evals, models, and especially UX is like getting a broken ASML machine without a manual</p>
+</blockquote>
+<p>I’m <em>still</em> trying to figure out the best patterns for doing this for my own work. Everyone knows that evals are important, but there remains a lack of great guidance for how to best implement them—I’m tracking this under my <a href="https://simonwillison.net/tags/evals/">evals tag</a>. My <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">SVG pelican riding a bicycle benchmark</a> is a pale imitation of what a real eval suite should look like.</p>
+<h4 id="apple-intelligence-is-bad-apple-s-mlx-library-is-excellent">Apple Intelligence is bad, Apple’s MLX library is excellent</h4>
+<p>As a Mac user I’ve been feeling a lot better about my choice of platform this year.</p>
+<p>Last year it felt like my lack of a Linux/Windows  machine with an NVIDIA GPU was a huge disadvantage in terms of trying out new models.</p>
+<p>On paper, a 64GB Mac should be a great machine for running models due to the way the CPU and GPU can share the same memory. In practice, many models are released as model weights and libraries that reward NVIDIA’s CUDA over other platforms.</p>
+<p>The <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a> ecosystem helped a lot here, but the real breakthrough has been Apple’s <a href="https://github.com/ml-explore/mlx">MLX</a> library, “an array framework for Apple Silicon”. It’s fantastic.</p>
+<p>Apple’s <a href="https://github.com/ml-explore/mlx-examples/tree/main/llms">mlx-lm</a> Python library supports running a wide range of MLX-compatible models on my Mac, with excellent performance. <a href="https://huggingface.co/mlx-community">mlx-community</a> on Hugging Face offers more than 1,000 models that have been converted to the necessary format.</p>
+<p>Prince Canuma’s excellent, fast moving <a href="https://github.com/Blaizzy/mlx-vlm">mlx-vlm</a> project brings vision LLMs to Apple Silicon as well. I used that recently <a href="https://simonwillison.net/2024/Dec/24/qvq/#with-mlx-vlm">to run Qwen’s QvQ</a>.</p>
+<p>While MLX is a game changer, Apple’s own “Apple Intelligence” features have mostly been a disappointment. I <a href="https://simonwillison.net/2024/Jun/10/apple-intelligence/">wrote about their initial announcement in June</a>, and I was optimistic that Apple had focused hard on the subset of LLM applications that preserve user privacy and minimize the chance of users getting mislead by confusing features.</p>
+<p>Now that those features are rolling out they’re pretty weak. As an LLM power-user I know what these models are capable of, and Apple’s LLM features offer a pale imitation of what a frontier LLM can do. Instead we’re getting notification summaries that <a href="https://simonwillison.net/2024/Dec/14/bbc-complains-to-apple-over-misleading-shooting-headline/">misrepresent news headlines</a> and writing assistant tools that I’ve not found useful at all. Genmoji are <a href="https://bsky.app/profile/simonwillison.net/post/3leceujwvcc2x">kind of fun though</a>.</p>
+<h4 id="the-rise-of-inference-scaling-reasoning-models">The rise of inference-scaling “reasoning” models</h4>
+<p>The most interesting development in the final quarter of 2024 was the introduction of a new shape of LLM, exemplified by OpenAI’s o1 models—initially released as o1-preview and o1-mini <a href="https://simonwillison.net/2024/Sep/12/openai-o1/">on September 12th</a>.</p>
+<p>One way to think about these models is an extension of the chain-of-thought prompting trick, first explored in the May 2022 paper <a href="https://arxiv.org/abs/2205.11916">Large Language Models are Zero-Shot Reasoners</a>.</p>
+<p>This is that trick where, if you get a model to talk out loud about a problem it’s solving, you often get a result which the model would not have achieved otherwise.</p>
+<p>o1 takes this process and further bakes it into the model itself. The details are somewhat obfuscated: o1 models spend “reasoning tokens” thinking through the problem that are not directly visible to the user (though the ChatGPT UI shows a summary of them), then outputs a final result.</p>
+<p>The biggest innovation here is that it opens up a new way to scale a model: instead of improving model performance purely through additional compute at training time, models can now take on harder problems by spending more compute on inference.</p>
+<p>The sequel to o1, o3 (they skipped “o2” for European trademark reasons) was announced <a href="https://simonwillison.net/2024/Dec/20/live-blog-the-12th-day-of-openai/">on 20th December</a> with an impressive result against the <a href="https://simonwillison.net/2024/Dec/20/openai-o3-breakthrough/">ARC-AGI benchmark</a>, albeit one that likely involved more than $1,000,000 of compute time expense!</p>
+<p>o3 is expected to ship in January. I doubt many people have real-world problems that would benefit from that level of compute expenditure—I certainly don’t!—but it appears to be a genuine next step in LLM architecture for taking on much harder problems.</p>
+<p>OpenAI are not the only game in town here. Google released their first entrant in the category, <code>gemini-2.0-flash-thinking-exp</code>, <a href="https://simonwillison.net/2024/Dec/19/gemini-thinking-mode/">on December 19th</a>.</p>
+<p>Alibaba’s Qwen team <a href="https://qwenlm.github.io/blog/qwq-32b-preview/">released their QwQ model</a> on November 28th—under an Apache 2.0 license, and that one <a href="https://simonwillison.net/2024/Nov/27/qwq/">I could run on my own machine</a>. They followed that up with a vision reasoning model called QvQ <a href="https://qwenlm.github.io/blog/qvq-72b-preview/">on December 24th</a>, which <a href="https://simonwillison.net/2024/Dec/24/qvq/">I also ran locally</a>.</p>
+<p>DeepSeek made their <a href="https://api-docs.deepseek.com/news/news1120">DeepSeek-R1-Lite-Preview</a> model available to try out through their chat interface <a href="https://x.com/deepseek_ai/status/1859200141355536422">on November 20th</a>.</p>
+<p>To understand more about inference scaling I recommend <a href="https://www.aisnakeoil.com/p/is-ai-progress-slowing-down">Is AI progress slowing down?</a> by Arvind Narayanan and Sayash Kapoor.</p>
+<p>Nothing yet from Anthropic or Meta but I would be very surprised if they don’t have their own inference-scaling models in the works. Meta published a relevant paper <a href="https://arxiv.org/abs/2412.06769">Training Large Language Models to Reason in a Continuous Latent Space</a> in December.</p>
+<h4 id="was-the-best-currently-available-llm-trained-in-china-for-less-than-6m-">Was the best currently available LLM trained in China for less than $6m?</h4>
+<p>Not quite, but almost! It does make for a great attention-grabbing headline.</p>
+<p>The big news to end the year was the release <a href="https://simonwillison.net/2024/Dec/25/deepseek-v3/">of DeepSeek v3</a>—dropped on Hugging Face on Christmas Day without so much as a README file, then followed by documentation and a paper <a href="https://simonwillison.net/2024/Dec/26/deepseek-v3/">the day after that</a>.</p>
+<p>DeepSeek v3 is a huge 685B parameter model—one of the largest openly licensed models currently available, significantly bigger than the largest of Meta’s Llama series, Llama 3.1 405B.</p>
+<p>Benchmarks put it up there with Claude 3.5 Sonnet. Vibe benchmarks (aka the <a href="https://lmarena.ai/?leaderboard">Chatbot Arena</a>) currently rank it 7th, just behind the Gemini 2.0 and OpenAI 4o/o1 models. This is by far the highest ranking openly licensed model.</p>
+<p>The really impressive thing about DeepSeek v3 is the training cost. The model was trained on 2,788,000 H800 GPU hours at an estimated cost of $5,576,000. Llama 3.1 405B trained 30,840,000 GPU hours—11x that used by DeepSeek v3, for a model that benchmarks slightly worse.</p>
+<p>Those <a href="https://www.cnbc.com/2023/10/17/us-bans-export-of-more-ai-chips-including-nvidia-h800-to-china.html">US export regulations</a> on GPUs to China seem to have inspired some <em>very</em> effective training optimizations!</p>
+<h4 id="the-environmental-impact-got-better">The environmental impact got better</h4>
+<p>A welcome result of the increased efficiency of the models—both the hosted ones and the ones I can run locally—is that the energy usage and environmental impact of running a prompt has dropped enormously over the past couple of years.</p>
+<p>OpenAI themselves are charging 100x less for a prompt compared to the GPT-3 days. I have it on good authority that neither Google Gemini nor Amazon Nova (two of the least expensive model providers) are running prompts at a loss.</p>
+<p>I think this means that, as individual users, we don’t need to feel any guilt at all for the energy consumed by the vast majority of our prompts. The impact is likely neglible compared to driving a car down the street or maybe even watching a video on YouTube.</p>
+<p>Likewise, training. DeepSeek v3 training for less than $6m is a fantastic sign that training costs can and should continue to drop.</p>
+<p>For less efficient models I find it useful to compare their energy usage to commercial flights. The largest Llama 3 model cost about the same as a single digit number of fully loaded passenger flights from New York to London. That’s certainly not nothing, but once trained that model can be used by millions of people at no extra training cost.</p>
+<h4 id="the-environmental-impact-got-much-much-worse">The environmental impact got much, much worse</h4>
+<p>The much bigger problem here is the enormous competitive buildout of the infrastructure that is imagined to be necessary for these models in the future.</p>
+<p>Companies like Google, Meta, Microsoft and Amazon are all spending billions of dollars rolling out new datacenters, with a very material impact <a href="https://www.bloomberg.com/graphics/2024-ai-power-home-appliances/">on the electricity grid</a> and the environment. There’s even talk of <a href="https://www.nytimes.com/2024/10/16/business/energy-environment/amazon-google-microsoft-nuclear-energy.html">spinning up new nuclear power stations</a>, but those can take decades.</p>
+<p>Is this infrastructure necessary? DeepSeek v3’s $6m training cost and the continued crash in LLM prices might hint that it’s not. But would you want to be the big tech executive that argued NOT to build out this infrastructure only to be proven wrong in a few years’ time?</p>
+<p>An interesting point of comparison here could be the way railways rolled out around the world in the 1800s. Constructing these required enormous investments and had a massive environmental impact, and many of the lines that were built turned out to be unnecessary—sometimes multiple lines from different companies serving the exact same routes!</p>
+<p>The resulting bubbles contributed to several financial crashes, see Wikipedia for <a href="https://en.wikipedia.org/wiki/Panic_of_1873">Panic of 1873</a>, <a href="https://en.wikipedia.org/wiki/Panic_of_1893">Panic of 1893</a>, <a href="https://en.wikipedia.org/wiki/Panic_of_1901">Panic of 1901</a> and the UK’s <a href="https://en.wikipedia.org/wiki/Railway_Mania">Railway Mania</a>. They left us with a lot of useful infrastructure and a great deal of bankruptcies and environmental damage.</p>
+<h4 id="the-year-of-slop">The year of slop</h4>
+<p>2024 was the year that the word "<a href="https://simonwillison.net/tags/slop/">slop</a>" became a term of art. I wrote about this <a href="https://simonwillison.net/2024/May/8/slop/">in May</a>, expanding on this tweet by <a href="https://twitter.com/deepfates/status/1787472784106639418">@deepfates</a>:</p>
+<blockquote>
+<p>Watching in real time as “slop” becomes a term of art. the way that “spam” became the term for unwanted emails, “slop” is going in the dictionary as the term for unwanted AI generated content</p>
+</blockquote>
+<p>I expanded that definition a tiny bit to this:</p>
+<blockquote>
+<p><strong>Slop</strong> describes AI-generated content that is both <em>unrequested</em> and <em>unreviewed</em>.</p>
+</blockquote>
+<p>I ended up getting quoted talking about slop in both <a href="https://www.theguardian.com/technology/article/2024/may/19/spam-junk-slop-the-latest-wave-of-ai-behind-the-zombie-internet">the Guardian</a> and <a href="https://www.nytimes.com/2024/06/11/style/ai-search-slop.html">the NY Times</a>. Here’s what I said in the NY TImes:</p>
+<blockquote>
+<p>Society needs concise ways to talk about modern A.I. — both the positives and the negatives. ‘Ignore that email, it’s spam,’ and ‘Ignore that article, it’s slop,’ are both useful lessons.</p>
+</blockquote>
+<p>I love the term “slop” because it so succinctly captures one of the ways we should <strong>not</strong> be using generative AI!</p>
+<p>Slop was even in the running for <a href="https://corp.oup.com/news/voting-opens-for-oxford-word-of-the-year-2024/">Oxford Word of the Year 2024</a>, but it lost <a href="https://corp.oup.com/news/brain-rot-named-oxford-word-of-the-year-2024/">to brain rot</a>.</p>
+<h4 id="synthetic-training-data-works-great">Synthetic training data works great</h4>
+<p>An idea that surprisingly seems to have stuck in the public consciousness is that of “model collapse”. This was first described in the paper <a href="https://arxiv.org/abs/2305.17493">The Curse of Recursion: Training on Generated Data Makes Models Forget</a> in May 2023, and repeated in Nature in July 2024 with the more eye-catching headline <a href="https://www.nature.com/articles/s41586-024-07566-y">AI models collapse when trained on recursively generated data</a>.</p>
+<p>The idea is seductive: as the internet floods with AI-generated slop the models themselves will degenerate, feeding on their own output in a way that leads to their inevitable demise!</p>
+<p>That’s clearly not happening. Instead, we are seeing AI labs increasingly train on <em>synthetic content</em>—deliberately creating artificial data to help steer their models in the right way.</p>
+<p>One of the best descriptions I’ve seen of this comes from <a href="https://simonwillison.net/2024/Dec/15/phi-4-technical-report/">the Phi-4 technical report</a>, which included this:</p>
+<blockquote>
+<p>Synthetic data as a substantial component of pretraining is becoming increasingly common, and the Phi series of models has consistently emphasized the importance of synthetic data. Rather than serving as a cheap substitute for organic data, synthetic data has several direct advantages over organic data.</p>
+<p><strong>Structured and Gradual Learning</strong>. In organic datasets, the relationship between tokens is often complex and indirect. Many reasoning steps may be required to connect the current token to the next, making it challenging for the model to learn effectively from next-token prediction. By contrast, each token generated by a language model is by definition predicted by the preceding tokens, making it easier for a model to follow the resulting reasoning patterns.</p>
+</blockquote>
+<p>Another common technique is to use larger models to help create training data for their smaller, cheaper alternatives—a trick used by an increasing number of labs. DeepSeek v3 used “reasoning” data created by DeepSeek-R1. Meta’s Llama 3.3 70B fine-tuning used <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md#training-data">over 25M synthetically generated examples</a>.</p>
+<p>Careful design of the training data that goes into an LLM appears to be the <em>entire game</em> for creating these models. The days of just grabbing a full scrape of the web and indiscriminately dumping it into a training run are long gone.</p>
+<h4 id="llms-somehow-got-even-harder-to-use">LLMs somehow got even harder to use</h4>
+<p>A drum I’ve been banging for a while is that LLMs are power-user tools—they’re chainsaws disguised as kitchen knives. They look deceptively simple to use—how hard can it be to type messages to a chatbot?—but in reality you need a huge depth of both understanding and experience to make the most of them and avoid their many pitfalls.</p>
+<p>If anything, this problem got worse in 2024.</p>
+<p>We’ve built computer systems you can talk to in human language, that will answer your questions and <em>usually</em> get them right! ... depending on the question, and how you ask it, and whether it’s accurately reflected in the undocumented and secret training set.</p>
+<p>The number of available systems has exploded. Different systems have different tools they can apply to your problems—like Python and JavaScript and web search and image generation and maybe even database lookups... so you’d better understand what those tools are, what they can do and how to tell if the LLM used them or not.</p>
+<p>Did you know ChatGPT has <a href="https://simonwillison.net/2024/Dec/10/chatgpt-canvas/#what-this-all-means">two entirely different ways</a> of running Python now?</p>
+<p>Want to build a Claude Artifact that talks to an external API? You’d better understand CSP and CORS HTTP headers first.</p>
+<p>The models may have got more capable, but most of the limitations remained the same. OpenAI’s o1 may finally be able to (mostly) count the Rs in strawberry, but its abilities are still limited by its nature as an LLM and the constraints placed on it by the harness it’s running in. o1 can’t run web searches or use Code Interpreter, but GPT-4o can—both in that same ChatGPT UI. (o1 <a href="https://chatgpt.com/share/677420e4-8854-8006-8940-9bc30b708821">will pretend to do those things</a> if you ask it to, a regression to the <a href="https://simonwillison.net/2023/Mar/10/chatgpt-internet-access/">URL hallucinations bug from early 2023</a>).</p>
+<p>What are we doing about this? Not much. Most users are thrown in at the deep end. The default LLM chat UI is like taking brand new computer users, dropping them into a Linux terminal and expecting them to figure it all out.</p>
+<p>Meanwhile, it’s increasingly common for end users to develop wildly inaccurate mental models of how these things work and what they are capable of. I’ve seen so many examples of people trying to win an argument with a screenshot from ChatGPT—an inherently ludicrous proposition, given the inherent unreliability of these models crossed with the fact that you can get them to say anything if you prompt them right.</p>
+<p>There’s a flipside to this too: a lot of better informed people have sworn off LLMs entirely because they can’t see how anyone could benefit from a tool with so many flaws. The key skill in getting the most out of LLMs is learning to work with tech that is both inherently unreliable and incredibly powerful at the same time. This is a decidedly non-obvious skill to acquire!</p>
+<p>There is <em>so much space</em> for helpful education content here, but we need to do do a lot better than outsourcing it all to AI grifters with bombastic Twitter threads.</p>
+<h4 id="knowledge-is-incredibly-unevenly-distributed">Knowledge is incredibly unevenly distributed</h4>
+<p>Most people have heard of ChatGPT by now. How many have heard of Claude?</p>
+<p>The knowledge gap between the people who actively follow this stuff and the 99% of the population who do not is <em>vast</em>.</p>
+<p>The pace of change doesn’t help either. In just the past month we’ve seen general availability of live interfaces where you can <em>point your phone’s camera</em> at something and <em>talk about it with your voice</em>... and optionally have it <a href="https://web.archive.org/web/20241230103630/https://help.openai.com/en/articles/10139238-santa-s-voice-in-chatgpt">pretend to be Santa</a>. Most self-certified nerds haven’t even tried that yet.</p>
+<p>Given the ongoing (and potential) impact on society that this technology has, I don’t think the size of this gap is healthy. I’d like to see a lot more effort put into improving this.</p>
+<h4 id="llms-need-better-criticism">LLMs need better criticism</h4>
+<p>A lot of people <em>absolutely hate</em> this stuff. In some of the spaces I hang out (<a href="https://fedi.simonwillison.net/@simon">Mastodon</a>, <a href="https://bsky.app/profile/simonwillison.net">Bluesky</a>, <a href="https://lobste.rs/">Lobste.rs</a>, even <a href="https://news.ycombinator.com/">Hacker News</a> on occasion) even suggesting that “LLMs are useful” can be enough to kick off a huge fight.</p>
+<p>I get it. There are plenty of reasons to dislike this technology—the environmental impact, the (lack of) ethics of the training data, the lack of reliability, the negative applications, the potential impact on people’s jobs.</p>
+<p>LLMs absolutely warrant criticism. We need to be talking through these problems, finding ways to mitigate them and helping people learn how to use these tools responsibly in ways where the positive applications outweigh the negative.</p>
+<p>I <em>like</em> people who are skeptical of this stuff. The hype has been deafening for more than two years now, and there are enormous quantities of snake oil and misinformation out there. A lot of <em>very bad</em> decisions are being made based on that hype. Being critical is a virtue.</p>
+<p>If we want people with decision-making authority to make <em>good decisions</em> about how to apply these tools we first need to acknowledge that there ARE good applications, and then help explain how to put those into practice while avoiding the many unintiutive traps.</p>
+<p>(If you still don’t think there are any good applications at all I’m not sure why you made it to this point in the article!)</p>
+<p>I think telling people that this whole field is environmentally catastrophic plagiarism machines that constantly make things up is doing those people a disservice, no matter how much truth that represents. There is genuine value to be had here, but getting to that value is unintuitive and needs guidance.</p>
+<p>Those of us who understand this stuff have a duty to help everyone else figure it out.</p>
+<h4 id="everything-tagged-llms-on-my-blog-in-2024">Everything tagged “llms” on my blog in 2024</h4>
+<p>Because I undoubtedly missed a whole bunch of things, here’s every long-form post I wrote in 2024 that I tagged with <a href="https://simonwillison.net/tags/llms/">llms</a>:</p>
+<ul>
+<li>January
+<ul>
+<li>7th: <a href="https://simonwillison.net/2024/Jan/7/call-it-ai/">It’s OK to call it Artificial Intelligence</a>
+</li>
+<li>9th: <a href="https://simonwillison.net/2024/Jan/9/what-i-should-have-said-about-ai/">What I should have said about the term Artificial Intelligence</a>
+</li>
+<li>17th: <a href="https://simonwillison.net/2024/Jan/17/oxide-and-friends/">Talking about Open Source LLMs on Oxide and Friends</a>
+</li>
+<li>26th: <a href="https://simonwillison.net/2024/Jan/26/llm/">LLM 0.13: The annotated release notes</a>
+</li>
+</ul>
+</li>
+<li>February
+<ul>
+<li>21st: <a href="https://simonwillison.net/2024/Feb/21/gemini-pro-video/">The killer app of Gemini Pro 1.5 is video</a>
+</li>
+</ul>
+</li>
+<li>March
+<ul>
+<li>5th: <a href="https://simonwillison.net/2024/Mar/5/prompt-injection-jailbreaking/">Prompt injection and jailbreaking are not the same thing</a>
+</li>
+<li>8th: <a href="https://simonwillison.net/2024/Mar/8/gpt-4-barrier/">The GPT-4 barrier has finally been broken</a>
+</li>
+<li>22nd: <a href="https://simonwillison.net/2024/Mar/22/claude-and-chatgpt-case-study/">Claude and ChatGPT for ad-hoc sidequests</a>
+</li>
+<li>23rd: <a href="https://simonwillison.net/2024/Mar/23/building-c-extensions-for-sqlite-with-chatgpt-code-interpreter/">Building and testing C extensions for SQLite with ChatGPT Code Interpreter</a>
+</li>
+<li>26th: <a href="https://simonwillison.net/2024/Mar/26/llm-cmd/">llm cmd undo last git commit—a new plugin for LLM</a>
+</li>
+</ul>
+</li>
+<li>April
+<ul>
+<li>8th: <a href="https://simonwillison.net/2024/Apr/8/files-to-prompt/">Building files-to-prompt entirely using Claude 3 Opus</a>
+</li>
+<li>10th: <a href="https://simonwillison.net/2024/Apr/10/weeknotes-llm-releases/">Three major LLM releases in 24 hours (plus weeknotes)</a>
+</li>
+<li>17th: <a href="https://simonwillison.net/2024/Apr/17/ai-for-data-journalism/">AI for Data Journalism: demonstrating what we can do with this stuff right now</a>
+</li>
+<li>22nd: <a href="https://simonwillison.net/2024/Apr/22/llama-3/">Options for accessing Llama 3 from the terminal using LLM</a>
+</li>
+</ul>
+</li>
+<li>May
+<ul>
+<li>8th: <a href="https://simonwillison.net/2024/May/8/slop/">Slop is the new name for unwanted AI-generated content</a>
+</li>
+<li>15th: <a href="https://simonwillison.net/2024/May/15/chatgpt-in-4o-mode/">ChatGPT in “4o” mode is not running the new features yet</a>
+</li>
+<li>29th: <a href="https://simonwillison.net/2024/May/29/training-not-chatting/">Training is not the same as chatting: ChatGPT and other LLMs don’t remember everything you say</a>
+</li>
+</ul>
+</li>
+<li>June
+<ul>
+<li>6th: <a href="https://simonwillison.net/2024/Jun/6/accidental-prompt-injection/">Accidental prompt injection against RAG applications</a>
+</li>
+<li>10th: <a href="https://simonwillison.net/2024/Jun/10/apple-intelligence/">Thoughts on the WWDC 2024 keynote on Apple Intelligence</a>
+</li>
+<li>17th: <a href="https://simonwillison.net/2024/Jun/17/cli-language-models/">Language models on the command-line</a>
+</li>
+<li>21st: <a href="https://simonwillison.net/2024/Jun/21/search-based-rag/">Building search-based RAG using Claude, Datasette and Val Town</a>
+</li>
+<li>27th: <a href="https://simonwillison.net/2024/Jun/27/ai-worlds-fair/">Open challenges for AI engineering</a>
+</li>
+</ul>
+</li>
+<li>July
+<ul>
+<li>14th: <a href="https://simonwillison.net/2024/Jul/14/pycon/">Imitation Intelligence, my keynote for PyCon US 2024</a>
+</li>
+<li>19th: <a href="https://simonwillison.net/2024/Jul/19/weeknotes/">Weeknotes: GPT-4o mini, LLM 0.15, sqlite-utils 3.37 and building a staging environment</a>
+</li>
+</ul>
+</li>
+<li>August
+<ul>
+<li>6th: <a href="https://simonwillison.net/2024/Aug/6/staging/">Weeknotes: a staging environment, a Datasette alpha and a bunch of new LLMs</a>
+</li>
+<li>8th: <a href="https://simonwillison.net/2024/Aug/8/django-http-debug/">django-http-debug, a new Django app mostly written by Claude</a>
+</li>
+<li>23rd: <a href="https://simonwillison.net/2024/Aug/23/anthropic-dangerous-direct-browser-access/">Claude’s API now supports CORS requests, enabling client-side applications</a>
+</li>
+<li>26th: <a href="https://simonwillison.net/2024/Aug/26/gemini-bounding-box-visualization/">Building a tool showing how Gemini Pro can return bounding boxes for objects in images</a>
+</li>
+</ul>
+</li>
+<li>September
+<ul>
+<li>6th: <a href="https://simonwillison.net/2024/Sep/6/weeknotes/">Calling LLMs from client-side JavaScript, converting PDFs to HTML + weeknotes</a>
+</li>
+<li>10th: <a href="https://simonwillison.net/2024/Sep/10/software-misadventures/">Notes from my appearance on the Software Misadventures Podcast</a>
+</li>
+<li>12th: <a href="https://simonwillison.net/2024/Sep/12/openai-o1/">Notes on OpenAI’s new o1 chain-of-thought models</a>
+</li>
+<li>20th: <a href="https://simonwillison.net/2024/Sep/20/using-llms-for-code/">Notes on using LLMs for code</a>
+</li>
+<li>29th: <a href="https://simonwillison.net/2024/Sep/29/notebooklm-audio-overview/">NotebookLM’s automatically generated podcasts are surprisingly effective</a>
+</li>
+<li>30th: <a href="https://simonwillison.net/2024/Sep/30/weeknotes/">Weeknotes: Three podcasts, two trips and a new plugin system</a>
+</li>
+</ul>
+</li>
+<li>October
+<ul>
+<li>1st: <a href="https://simonwillison.net/2024/Oct/1/openai-devday-2024-live-blog/">OpenAI DevDay 2024 live blog</a>
+</li>
+<li>2nd: <a href="https://simonwillison.net/2024/Oct/2/not-digital-god/">OpenAI DevDay: Let’s build developer tools, not digital God</a>
+</li>
+<li>15th: <a href="https://simonwillison.net/2024/Oct/15/chatgpt-horoscopes/">ChatGPT will happily write you a thinly disguised horoscope</a>
+</li>
+<li>17th: <a href="https://simonwillison.net/2024/Oct/17/video-scraping/">Video scraping: extracting JSON data from a 35 second screen capture for less than 1/10th of a cent</a>
+</li>
+<li>18th: <a href="https://simonwillison.net/2024/Oct/18/openai-audio/">Experimenting with audio input and output for the OpenAI Chat Completion API</a>
+</li>
+<li>19th: <a href="https://simonwillison.net/2024/Oct/19/mistralrs/">Running Llama 3.2 Vision and Phi-3.5 Vision on a Mac with mistral.rs</a>
+</li>
+<li>21st: <a href="https://simonwillison.net/2024/Oct/21/claude-artifacts/">Everything I built with Claude Artifacts this week</a>
+</li>
+<li>22nd: <a href="https://simonwillison.net/2024/Oct/22/computer-use/">Initial explorations of Anthropic’s new Computer Use capability</a>
+</li>
+<li>24th: <a href="https://simonwillison.net/2024/Oct/24/claude-analysis-tool/">Notes on the new Claude analysis JavaScript code execution tool</a>
+</li>
+<li>27th: <a href="https://simonwillison.net/2024/Oct/27/llm-jq/">Run a prompt to generate and execute jq programs using llm-jq</a>
+</li>
+<li>29th: <a href="https://simonwillison.net/2024/Oct/29/llm-multi-modal/">You can now run prompts against images, audio and video in your terminal using LLM</a>
+</li>
+<li>30th: <a href="https://simonwillison.net/2024/Oct/30/monthnotes/">W̶e̶e̶k̶n̶o̶t̶e̶s̶  Monthnotes for October</a>
+</li>
+</ul>
+</li>
+<li>November
+<ul>
+<li>4th: <a href="https://simonwillison.net/2024/Nov/4/haiku/">Claude 3.5 Haiku</a>
+</li>
+<li>7th: <a href="https://simonwillison.net/2024/Nov/7/project-verdad/">Project: VERDAD—tracking misinformation in radio broadcasts using Gemini 1.5</a>
+</li>
+<li>12th: <a href="https://simonwillison.net/2024/Nov/12/qwen25-coder/">Qwen2.5-Coder-32B is an LLM that can code well that runs on my Mac</a>
+</li>
+<li>19th: <a href="https://simonwillison.net/2024/Nov/19/notes-from-bing-chat/">Notes from Bing Chat—Our First Encounter With Manipulative AI</a>
+</li>
+<li>25th: <a href="https://simonwillison.net/2024/Nov/25/ask-questions-of-sqlite/">Ask questions of SQLite databases and CSV/JSON files in your terminal</a>
+</li>
+</ul>
+</li>
+<li>December
+<ul>
+<li>4th: <a href="https://simonwillison.net/2024/Dec/4/amazon-nova/">First impressions of the new Amazon Nova LLMs (via a new llm-bedrock plugin)</a>
+</li>
+<li>7th: <a href="https://simonwillison.net/2024/Dec/7/prompts-js/">Prompts.js</a>
+</li>
+<li>9th: <a href="https://simonwillison.net/2024/Dec/9/llama-33-70b/">I can now run a GPT-4 class model on my laptop</a>
+</li>
+<li>10th: <a href="https://simonwillison.net/2024/Dec/10/chatgpt-canvas/">ChatGPT Canvas can make API requests now, but it’s complicated</a>
+</li>
+<li>11th: <a href="https://simonwillison.net/2024/Dec/11/gemini-2/">Gemini 2.0 Flash: An outstanding multi-modal LLM with a sci-fi streaming mode</a>
+</li>
+<li>19th: <a href="https://simonwillison.net/2024/Dec/19/one-shot-python-tools/">Building Python tools with a one-shot prompt using uv run and Claude Projects</a>
+</li>
+<li>19th: <a href="https://simonwillison.net/2024/Dec/19/gemini-thinking-mode/">Gemini 2.0 Flash “Thinking mode”</a>
+</li>
+<li>20th: <a href="https://simonwillison.net/2024/Dec/20/december-in-llms-has-been-a-lot/">December in LLMs has been a lot</a>
+</li>
+<li>20th: <a href="https://simonwillison.net/2024/Dec/20/live-blog-the-12th-day-of-openai/">Live blog: the 12th day of OpenAI—“Early evals for OpenAI o3”</a>
+</li>
+<li>24th: <a href="https://simonwillison.net/2024/Dec/24/qvq/">Trying out QvQ—Qwen’s new visual reasoning model</a>
+</li>
+<li>31st: <a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/">Things we learned about LLMs in 2024</a>
+</li>
+</ul>
+</li>
+</ul>
+<p>(This list generated <a href="https://simonwillison.net/dashboard/llm-posts-in-2024/">using Django SQL Dashboard</a> with a SQL query <a href="https://gist.github.com/simonw/89c358ac3617b38afc41c79c995a4ebe">written for me by Claude</a>.)</p>
+
+
+</div>
+<div class="entryFooter">Posted <a href="/2024/Dec/31/">31st December 2024</a> at 6:07 pm &middot; Follow me on <a href="https://fedi.simonwillison.net/@simon">Mastodon</a> or <a href="https://twitter.com/simonw">Twitter</a> or <a href="https://simonwillison.net/about/#subscribe">subscribe to my newsletter</a></div>
+
+</div>
+
+<div class="recent-articles">
+<h2>More recent articles</h2>
+<ul class="bullets">
+  
+    <li><a href="/2025/Feb/7/pip-install-llm-smollm2/">Using pip to install a Large Language Model that&#x27;s under 100MB</a> - 7th February 2025</li>
+  
+    <li><a href="/2025/Jan/31/o3-mini/">OpenAI o3-mini, now available in LLM</a> - 31st January 2025</li>
+  
+    <li><a href="/2025/Jan/24/selfish-open-source/">A selfish personal argument for releasing code as Open Source</a> - 24th January 2025</li>
+  
+</ul>
+</div>
+
+
+</div> <!-- #primary -->
+
+<div id="secondary">
+
+<div class="metabox">
+<p class="this-is">This is <strong>Things we learned about LLMs in 2024</strong> by Simon Willison, posted on <a href="/2024/Dec/31/">31st December 2024</a>.</p>
+
+<div class="series-info">
+  <p>Part of series <strong><a href="/series/llms-annual-review/">LLMs annual review</a></strong></p>
+  <ol start="1">
+    
+      
+        <li><a href="/2023/Dec/31/ai-in-2023/">Stuff we figured out about AI in 2023</a> - Dec. 31, 2023, 11:59 p.m. </li>
+      
+    
+      
+        <li><strong>Things we learned about LLMs in 2024</strong></a> - Dec. 31, 2024, 6:07 p.m. </li>
+      
+    
+    
+  </ol>
+</div>
+
+
+    
+        <a class="item-tag" href="/tags/google/" rel="tag">
+            google
+            <span>346</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/ai/" rel="tag">
+            ai
+            <span>1092</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/openai/" rel="tag">
+            openai
+            <span>254</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/generative-ai/" rel="tag">
+            generative-ai
+            <span>937</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/llms/" rel="tag">
+            llms
+            <span>925</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/anthropic/" rel="tag">
+            anthropic
+            <span>114</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/gemini/" rel="tag">
+            gemini
+            <span>55</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/meta/" rel="tag">
+            meta
+            <span>26</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/inference-scaling/" rel="tag">
+            inference-scaling
+            <span>28</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/long-context/" rel="tag">
+            long-context
+            <span>10</span>
+        </a>
+    
+
+
+<p><strong>Next:</strong> <a href="/2025/Jan/2/ending-a-year-long-posting-streak/">Ending a year long posting streak</a></p>
+
+
+<p><strong>Previous:</strong> <a href="/2024/Dec/24/qvq/">Trying out QvQ - Qwen&#x27;s new visual reasoning model</a></p>
+
+<div data-ea-publisher="simonwillisonnet" data-ea-type="image"></div>
+</div>
+
+
+
+</div> <!-- #secondary -->
+</div> <!-- #wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+<div id="ft">
+    <ul>
+      <li><a href="/about/#about-site">Colophon</a></li>
+      <li>&copy;</li>
+      <li><a href="/2002/">2002</a></li>
+      <li><a href="/2003/">2003</a></li>
+      <li><a href="/2004/">2004</a></li>
+      <li><a href="/2005/">2005</a></li>
+      <li><a href="/2006/">2006</a></li>
+      <li><a href="/2007/">2007</a></li>
+      <li><a href="/2008/">2008</a></li>
+      <li><a href="/2009/">2009</a></li>
+      <li><a href="/2010/">2010</a></li>
+      <li><a href="/2011/">2011</a></li>
+      <li><a href="/2012/">2012</a></li>
+      <li><a href="/2013/">2013</a></li>
+      <li><a href="/2014/">2014</a></li>
+      <li><a href="/2015/">2015</a></li>
+      <li><a href="/2016/">2016</a></li>
+      <li><a href="/2017/">2017</a></li>
+      <li><a href="/2018/">2018</a></li>
+      <li><a href="/2019/">2019</a></li>
+      <li><a href="/2020/">2020</a></li>
+      <li><a href="/2021/">2021</a></li>
+      <li><a href="/2022/">2022</a></li>
+      <li><a href="/2023/">2023</a></li>
+      <li><a href="/2024/">2024</a></li>
+      <li><a href="/2025/">2025</a></li>
+    </ul>
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('h4[id],h5[id],h6[id]').forEach(el => {
+    const id = el.getAttribute('id');
+    const permalinkContext = el.closest('[data-permalink-context]');
+    if (permalinkContext) {
+      const url = permalinkContext.getAttribute('data-permalink-context');
+      const hashLink = document.createElement('a');
+      hashLink.style.borderBottom = 'none';
+      hashLink.style.color = '#666';
+      hashLink.style.fontSize = '1em';
+      hashLink.style.opacity = 0.8;
+      hashLink.setAttribute('href', url + '#' + id);
+      hashLink.innerText = '#';
+      el.appendChild(document.createTextNode(' '));
+      el.appendChild(hashLink);
+    }
+  });
+});
+</script>
+<script type="module">
+  const config = [
+    {"tag": "lite-youtube", "js": "/static/lite-yt-embed.js", "css": "/static/lite-yt-embed.css"}
+  ];
+  for (const {tag, js, css} of config) {
+    if (document.querySelector(tag)) {
+      if (css) {
+        document.head.appendChild(
+          Object.assign(document.createElement('link'), {
+            rel: 'stylesheet',
+            href: css
+          })
+        );
+      }
+      if (js) {
+        await import(js);
+      }
+    }
+  }
+</script>
+</body>
+</html>

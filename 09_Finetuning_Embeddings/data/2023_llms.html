@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://simonwillison.net/2023/Dec/31/ai-in-2023/">
+<title>Stuff we figured out about AI in 2023</title>
+<script defer data-domain="simonwillison.net" src="https://plausible.io/js/plausible.js"></script>
+<link rel="alternate" type="application/atom+xml" title="Atom" href="/atom/everything/">
+<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+<link rel="webmention" href="https://webmention.io/simonwillison.net/webmention">
+<link rel="pingback" href="https://webmention.io/simonwillison.net/xmlrpc">
+<meta name="author" content="Simon Willison">
+<meta property="og:site_name" content="Simon Willison’s Weblog">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.simonwillison.net/static/2023/2023-tag-cloud.jpg">
+
+<meta name="twitter:creator" content="@simonw">
+<meta property="og:url" content="https://simonwillison.net/2023/Dec/31/ai-in-2023/">
+<meta property="og:title" content="Stuff we figured out about AI in 2023">
+<meta property="og:image" content="https://static.simonwillison.net/static/2023/2023-tag-cloud.jpg">
+<meta property="og:type" content="article">
+<meta property="og:description" content="2023 was the breakthrough year for Large Language Models (LLMs). I think it’s OK to call these AI—they’re the latest and (currently) most interesting development in the academic field of …">
+<meta property="og:updated_time" content="1704067192">
+
+
+
+<script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+
+
+</head>
+<body class="smallhead">
+
+<div id="smallhead">
+  <div id="smallhead-inner">
+    <h1><a href="/">Simon Willison’s Weblog</a></h1>
+    <a id="smallhead-about" href="/about/#subscribe">Subscribe</a>
+  </div>
+</div><!-- #smallhead -->
+
+<div id="wrapper">
+<div id="primary">
+
+<div class="entry entryPage">
+
+
+<div data-permalink-context="/2023/Dec/31/ai-in-2023/">
+<h2>Stuff we figured out about AI in 2023</h2>
+<p class="mobile-date">31st December 2023</p>
+
+
+
+<p>2023 was the breakthrough year for Large Language Models (LLMs). I think it’s OK to call these AI—they’re the latest and (currently) most interesting development in the academic field of Artificial Intelligence that <a href="https://en.wikipedia.org/wiki/Dartmouth_workshop">dates back to the 1950s</a>.</p>
+<p>Here’s my attempt to round up the highlights in one place!</p>
+<ul>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#large-language-models">Large Language Models</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#easy-to-build">They’re actually quite easy to build</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#on-your-devices">You can run LLMs on your own devices</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#hobbyist-fine-tuning">Hobbyists can build their own fine-tuned models</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#cant-build-gpt4">We don’t yet know how to build GPT-4</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#vibes-based-development">Vibes Based Development</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#smart-and-dumb">LLMs are really smart, and also really, really dumb</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#gullibility-unsolved">Gullibility is the biggest unsolved problem</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#code-best-application">Code may be the best application</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#ethics-diabolically-complex">The ethics of this space remain diabolically complex</a></li>
+  <li><a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/#my-blog-2023">My blog in 2023</a></li>
+</ul>
+<p>Here’s the sequel to this post: <a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/">Things we learned about LLMs in 2024</a>.</p>
+<h4 id="large-language-models">Large Language Models</h4>
+<p>In the past 24-36 months, our species has discovered that you can take a GIANT corpus of text, run it through a pile of GPUs, and use it to create a fascinating new kind of software.</p>
+<p>LLMs can do a lot of things. They can answer questions, summarize documents, translate from one language to another, extract information and even write surprisingly competent code.</p>
+<p>They can also help you cheat at your homework, generate unlimited streams of fake content and be used for all manner of nefarious purposes.</p>
+<p>So far, I think they’re a net positive. I’ve used them on a personal level to <a href="https://simonwillison.net/2023/Mar/27/ai-enhanced-development/">improve my productivity</a> (and entertain myself) in all sorts of different ways. I think people who learn how to use them effectively can gain a significant boost to their quality of life.</p>
+<p>A lot of people are yet to be sold on their value! Some think their negatives outweigh their positives, some think they are all hot air, and some even think they represent an existential threat to humanity.</p>
+<h4 id="easy-to-build">They’re actually quite easy to build</h4>
+<p>The most surprising thing we’ve learned about LLMs this year is that they’re actually quite easy to build.</p>
+<p>Intuitively, one would expect that systems this powerful would take millions of lines of complex code. Instead, it turns out a <a href="https://github.com/karpathy/nanoGPT/blob/master/train.py">few hundred lines of Python</a> is genuinely enough to train a basic version!</p>
+<p>What matters most is the training  data. You need a <em>lot</em> of data to make these things work, and the quantity and quality of the training data appears to be the most important factor in how good the resulting model is.</p>
+<p>If you can gather the right data, and afford to pay for the GPUs to train it, you can build an LLM.</p>
+<p>A year ago, the only organization that had released a generally useful LLM was OpenAI. We’ve now seen better-than-GPT-3 class models produced by Anthropic, Mistral, Google, Meta, EleutherAI, Stability AI, TII in Abu Dhabi (<a href="https://falconllm.tii.ae/">Falcon</a>), Microsoft Research, xAI, Replit, Baidu and a bunch of other organizations.</p>
+<p>The training cost (hardware and electricity) is still significant—initially millions of dollars, but that seems to have dropped to the tens of thousands already. Microsoft’s Phi-2 <a href="https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/">claims to have used</a> “14 days on 96 A100 GPUs”, which works out at around $35,000 <a href="https://lambdalabs.com/service/gpu-cloud">using current Lambda pricing</a>.</p>
+<p>So training an LLM still isn’t something a hobbyist can afford, but it’s no longer the sole domain of the super-rich. I like to compare the difficulty of training an LLM to that of building a suspension bridge—not trivial, but hundreds of countries around the world have figured out how to do it. <em>(Correction: Wikipedia’s <a href="https://en.wikipedia.org/wiki/Category:Suspension_bridges_by_country">Suspension bridges by country</a> category lists 44 countries).</em></p>
+<h4 id="on-your-devices">You can run LLMs on your own devices</h4>
+<p>In January of this year, I thought it would be years before I could run a useful LLM on my own computer. GPT-3 and 3.5 were pretty much the only games in town, and I thought that even if the model weights were available it would take a $10,000+ server to run them.</p>
+<p>Then in February, Meta released Llama. And a few weeks later in March, Georgi Gerganov <a href="https://github.com/ggerganov/llama.cpp">released code</a> that got it working on a MacBook.</p>
+<p>I wrote about how <a href="https://simonwillison.net/2023/Mar/11/llama/">Large language models are having their Stable Diffusion moment</a>, and with hindsight that was a very good call!</p>
+<p>This unleashed a whirlwind of innovation, which was accelerated further in July when Meta <a href="https://simonwillison.net/2023/Jul/18/accessing-llama-2/">released Llama 2</a>—an improved version which, crucially, included permission for commercial use.</p>
+<p>Today there are literally thousands of LLMs that can be run locally, on all manner of different devices.</p>
+<p>I run a bunch of them on my laptop. I run Mistral 7B (a surprisingly great model) <a href="https://llm.mlc.ai/#ios">on my iPhone</a>. You can install several different apps to get your own, local, completely private LLM. My own <a href="https://llm.datasette.io/">LLM</a> project provides a CLI tool for running an array of different models <a href="https://simonwillison.net/2023/Jul/12/llm/">via plugins</a>.</p>
+<p>You can even <a href="https://simonwillison.net/2023/Apr/16/web-llm/">run them entirely in your browser</a> using WebAssembly and the latest Chrome!</p>
+<h4 id="hobbyist-fine-tuning">Hobbyists can build their own fine-tuned models</h4>
+<p>I said earlier that building an LLM was still out of reach of hobbyists. That may be true for training from scratch, but fine-tuning one of those models is another matter entirely.</p>
+<p>There’s now a fascinating ecosystem of people training their own models on top of these foundations, publishing those models, building fine-tuning datasets and sharing those too.</p>
+<p>The Hugging Face <a href="https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard">Open LLM Leaderboard</a> is one place that tracks these. I can’t even attempt to count them, and any count would be out-of-date within a few hours.</p>
+<p>The best overall openly licensed LLM at any time is rarely a foundation model: instead, it’s whichever fine-tuned community model has most recently discovered the best combination of fine-tuning data.</p>
+<p>This is a huge advantage for open over closed models: the closed, hosted models don’t have thousands of researchers and hobbyists around the world collaborating and competing to improve them.</p>
+<h4 id="cant-build-gpt4">We don’t yet know how to build GPT-4</h4>
+<p>Frustratingly, despite the enormous leaps ahead we’ve had this year, we are yet to see an alternative model that’s better than GPT-4.</p>
+<p>OpenAI released GPT-4 in March, though it later turned out we had a sneak peak of it in February when Microsoft used it as part of the new Bing.</p>
+<p>This may well change in the next few weeks: Google’s Gemini Ultra has big claims, but isn’t yet available for us to try out.</p>
+<p>The team behind Mistral are working to beat GPT-4 as well, and their track record is <a href="https://simonwillison.net/2023/Dec/18/mistral/">already extremely strong</a> considering their first public model only came out in September, and they’ve released two significant improvements since then.</p>
+<p>Still, I’m surprised that no-one has beaten the now almost year old GPT-4 by now. OpenAI clearly have some substantial tricks that they haven’t shared yet.</p>
+<h4 id="vibes-based-development">Vibes Based Development</h4>
+<p>As a computer scientist and software engineer, LLMs are <em>infuriating</em>.</p>
+<p>Even the openly licensed ones are still the world’s most convoluted black boxes. We continue to have very little idea what they can do, how exactly they work and how best to control them.</p>
+<p>I’m used to programming where the computer does exactly what I tell it to do. Prompting an LLM is decidedly not that!</p>
+<p>The worst part is the challenge of evaluating them.</p>
+<p>There are plenty of benchmarks, but no benchmark is going to tell you if an LLM actually “feels” right when you try it for a given task.</p>
+<p>I find I have to work with an LLM for a few weeks in order to get a good intuition for it’s strengths and weaknesses. This greatly limits how many I can evaluate myself!</p>
+<p>The most frustrating thing for me is at the level of individual prompting.</p>
+<p>Sometimes I’ll tweak a prompt and capitalize some of the words in it, to emphasize that I <em>really</em> want it to OUTPUT VALID MARKDOWN or similar. Did capitalizing those words make a difference? I still don’t have a good methodology for figuring that out.</p>
+<p>We’re left with what’s effectively Vibes Based Development. It’s vibes all the way down.</p>
+<p>I’d love to see us move beyond vibes in 2024!</p>
+<h4 id="smart-and-dumb">LLMs are really smart, and also really, really dumb</h4>
+<p>On the one hand, we keep on finding new things that LLMs can do that we didn’t expect—and that the people who trained the models didn’t expect either. That’s usually really fun!</p>
+<p>But on the other hand, the things you sometimes have to do to get the models to behave are often <em>incredibly</em> dumb.</p>
+<p>Does ChatGPT <a href="https://arstechnica.com/information-technology/2023/12/is-chatgpt-becoming-lazier-because-its-december-people-run-tests-to-find-out/">get lazy in December</a>, because its hidden system prompt includes the current date and its training data shows that people provide less useful answers coming up to the holidays?</p>
+<p>The honest answer is “maybe”! No-one is entirely sure, but if you give it a different date its answers may skew slightly longer.</p>
+<p>Sometimes it omits sections of code and leaves you to fill them in, but if you tell it you can’t type because you don’t have any fingers it produces the full code for you instead.</p>
+<p>There are so many more examples like this. Offer it cash tips for better answers. Tell it your career depends on it. Give it positive reinforcement. It’s all so dumb, but it works!</p>
+<h4 id="gullibility-unsolved">Gullibility is the biggest unsolved problem</h4>
+<p>I <a href="https://simonwillison.net/2022/Sep/12/prompt-injection/">coined the term prompt injection</a> in September last year.</p>
+<p>15 months later, I regret to say that we’re still no closer to a robust, dependable solution to this problem.</p>
+<p>I’ve written <a href="https://simonwillison.net/series/prompt-injection/">a ton about this already</a>.</p>
+<p>Beyond that specific class of security vulnerabilities, I’ve started seeing this as a wider problem of <strong>gullibility</strong>.</p>
+<p>Language Models are gullible. They “believe” what we tell them—what’s in their training data, then what’s in the fine-tuning data, then what’s in the prompt.</p>
+<p>In order to be useful tools for us, we need them to believe what we feed them!</p>
+<p>But it turns out a lot of the things we want to build need them <em>not</em> to be gullible.</p>
+<p>Everyone wants an AI personal assistant. If you hired a real-world personal assistant who believed <em>everything</em> that anyone told them, you would quickly find that their ability to positively impact your life was severely limited.</p>
+<p>A lot of people are excited about AI agents—an infuriatingly vague term that seems to be converging on “AI systems that can go away and act on your behalf”. We’ve been talking about them all year, but I’ve seen few if any examples of them running in production, despite lots of exciting prototypes.</p>
+<p>I think this is because of gullibility.</p>
+<p>Can we solve this? Honestly, I’m beginning to suspect that you can’t fully solve gullibility without achieving <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">AGI</a>. So it may be quite a while before those agent dreams can really start to come true!</p>
+<h4 id="code-best-application">Code may be the best application</h4>
+<p>Over the course of the year, it’s become increasingly clear that writing code is one of the things LLMs are <em>most</em> capable of.</p>
+<p>If you think about what they do, this isn’t such a big surprise. The grammar rules of programming languages like Python and JavaScript are massively less complicated than the grammar of Chinese, Spanish or English.</p>
+<p>It’s still astonishing to me how effective they are though.</p>
+<p>One of the great weaknesses of LLMs is their tendency to hallucinate—to imagine things that don’t correspond to reality. You would expect this to be a particularly bad problem for code—if an LLM hallucinates a method that doesn’t exist, the code should be useless.</p>
+<p>Except... you can run generated code to see if it’s correct. And with patterns <a href="https://simonwillison.net/2023/Apr/12/code-interpreter/">like ChatGPT Code Interpreter</a> the LLM can execute the code itself, process the error message, then rewrite it and keep trying until it works!</p>
+<p>So hallucination is a much lesser problem for code generation than for anything else. If only we had the equivalent of Code Interpreter for fact-checking natural language!</p>
+<p>How should we feel about this as software engineers?</p>
+<p>On the one hand, this feels like a threat: who needs a programmer if ChatGPT can write code for you?</p>
+<p>On the other hand, as software engineers we are better placed to take advantage of this than anyone else. We’ve all been given <a href="https://simonwillison.net/2023/Oct/17/open-questions/#open-questions.036.jpeg">weird coding interns</a>—we can use our deep knowledge to prompt them to solve coding problems more effectively than anyone else can.</p>
+<h4 id="ethics-diabolically-complex">The ethics of this space remain diabolically complex</h4>
+<p>In September last year Andy Baio and I <a href="https://simonwillison.net/2022/Sep/5/laion-aesthetics-weeknotes/">produced the first major story</a> on the unlicensed training data behind Stable Diffusion.</p>
+<p>Since then, almost every major LLM (and most of the image generation models) have also been trained on unlicensed data.</p>
+<p>Just this week, the New York Times <a href="https://www.nytimes.com/2023/12/27/business/media/new-york-times-open-ai-microsoft-lawsuit.html">launched a landmark lawsuit against OpenAI and Microsoft</a> over this issue. The <a href="https://nytco-assets.nytimes.com/2023/12/NYT_Complaint_Dec2023.pdf">69 page PDF</a> is genuinely worth reading—especially the first few pages, which lay out the issues in a way that’s surprisingly easy to follow. The rest of the document includes some of the clearest explanations of what LLMs are, how they work and how they are built that I’ve read anywhere.</p>
+<p>The legal arguments here are complex. I’m not a lawyer, but I don’t think this one will be easily decided. Whichever way it goes, I expect this case to have a profound impact on how this technology develops in the future.</p>
+<p>Law is not ethics. Is it OK to train models on people’s content without their permission, when those models will then be used in ways that compete with those people?</p>
+<p>As the quality of results produced by AI models has increased over the year, these questions have become even more pressing.</p>
+<p>The impact on human society in terms of these models is already huge, if difficult to objectively measure.</p>
+<p>People have certainly lost work to them—anecdotally, I’ve seen this for copywriters, artists and translators.</p>
+<p>There are a great deal of untold stories here. I’m hoping 2024 sees significant amounts of dedicated journalism on this topic.</p>
+<h4 id="my-blog-2023">My blog in 2023</h4>
+<p>Here’s a tag cloud for content I posted to my blog in 2023 (generated <a href="https://simonwillison.net/dashboard/tag-cloud-by-year/?year=2023">using Django SQL Dashboard</a>):</p>
+<p><img src="https://static.simonwillison.net/static/2023/2023-tag-cloud.jpg" alt="Tag cloud words in order of size: ai, generativeai, llms, openai, chatgpt, projects, python, datasette, ethics, llama, homebrewllms, sqlite, gpt3, promptengineering, promptinjection, llm, security, opensource, gpt4, weeknotes " style="max-width: 100%;"></p>
+<p>The top five: <a href="https://simonwillison.net/tags/ai/">ai</a> (342), <a href="https://simonwillison.net/tags/generativeai/">generativeai</a> (300), <a href="https://simonwillison.net/tags/llms/">llms</a> (287), <a href="https://simonwillison.net/tags/openai/">openai</a> (86), <a href="https://simonwillison.net/tags/chatgpt/">chatgpt</a> (78).</p>
+<p>I’ve written a lot about this stuff!</p>
+<p>I grabbed a screenshot of my <a href="https://plausible.io/">Plausible</a> analytics for the year, fed that to ChatGPT Vision, told it to extract the data into a table, then got it to mix in entry titles (from a SQL query it wrote) and produced this table with it. Here are my top entries this year by amount of traffic:</p>
+<table>
+<thead>
+<tr>
+<th>Article</th>
+<th>Visitors</th>
+<th>Pageviews</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://simonwillison.net/2023/Feb/15/bing/">Bing: “I will not harm you unless you harm me first”</a></td>
+<td>1.1M</td>
+<td>1.3M</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/May/4/no-moat/">Leaked Google document: “We Have No Moat, And Neither Does OpenAI”</a></td>
+<td>132k</td>
+<td>162k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Mar/11/llama/">Large language models are having their Stable Diffusion moment</a></td>
+<td>121k</td>
+<td>150k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Apr/14/worst-that-can-happen/">Prompt injection: What’s the worst that can happen?</a></td>
+<td>79.8k</td>
+<td>95.9k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Oct/23/embeddings/">Embeddings: What they are and why they matter</a></td>
+<td>61.7k</td>
+<td>79.3k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Aug/3/weird-world-of-llms/">Catching up on the weird world of LLMs</a></td>
+<td>61.6k</td>
+<td>85.9k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Nov/29/llamafile/">llamafile is the new best way to run an LLM on your own computer</a></td>
+<td>52k</td>
+<td>66k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/May/2/prompt-injection-explained/">Prompt injection explained, with video, slides, and a transcript</a></td>
+<td>51k</td>
+<td>61.9k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Mar/27/ai-enhanced-development/">AI-enhanced development makes me more ambitious with my projects</a></td>
+<td>49.6k</td>
+<td>60.1k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Jun/8/gpt-tokenizers/">Understanding GPT tokenizers</a></td>
+<td>49.5k</td>
+<td>61.1k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Nov/15/gpts/">Exploring GPTs: ChatGPT in a trench coat?</a></td>
+<td>46.4k</td>
+<td>58.5k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Mar/17/beat-chatgpt-in-a-browser/">Could you train a ChatGPT-beating model for $85,000 and run it in a browser?</a></td>
+<td>40.5k</td>
+<td>49.2k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Jan/13/semantic-search-answers/">How to implement Q&amp;A against your documentation with GPT3, embeddings and Datasette</a></td>
+<td>37.3k</td>
+<td>44.9k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/May/27/lawyer-chatgpt/">Lawyer cites fake cases invented by ChatGPT, judge is not amused</a></td>
+<td>37.1k</td>
+<td>47.4k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Oct/26/add-a-walrus/">Now add a walrus: Prompt engineering in DALL-E 3</a></td>
+<td>32.8k</td>
+<td>41.2k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Apr/16/web-llm/">Web LLM runs the vicuna-7b Large Language Model entirely in your browser, and it’s very impressive</a></td>
+<td>32.5k</td>
+<td>38.2k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Mar/10/chatgpt-internet-access/">ChatGPT can’t access the internet, even though it really looks like it can</a></td>
+<td>30.5k</td>
+<td>34.2k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Mar/13/alpaca/">Stanford Alpaca, and the acceleration of on-device large language model development</a></td>
+<td>29.7k</td>
+<td>35.7k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Aug/01/llama-2-mac/">Run Llama 2 on your own Mac using LLM and Homebrew</a></td>
+<td>27.9k</td>
+<td>33.6k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/May/4/midjourney-51/">Midjourney 5.1</a></td>
+<td>26.7k</td>
+<td>33.4k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Apr/02/calculator-for-words/">Think of language models like ChatGPT as a “calculator for words”</a></td>
+<td>25k</td>
+<td>31.8k</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/2023/Oct/14/multi-modal-prompt-injection/">Multi-modal prompt injection image attacks against GPT-4V</a></td>
+<td>23.7k</td>
+<td>27.4k</td>
+</tr>
+</tbody>
+</table>
+<p>I also gave a bunch of talks and podcast appearances. I’ve started habitually <a href="https://simonwillison.net/2023/Aug/6/annotated-presentations/">turning my talks into annotated presentations</a>—here are my best from 2023:</p>
+<ul>
+<li><a href="https://simonwillison.net/2023/May/2/prompt-injection-explained/">Prompt injection explained, with video, slides, and a transcript</a></li>
+<li><a href="https://simonwillison.net/2023/Aug/3/weird-world-of-llms/">Catching up on the weird world of LLMs</a></li>
+<li><a href="https://simonwillison.net/2023/Aug/27/wordcamp-llms/">Making Large Language Models work for you</a></li>
+<li><a href="https://simonwillison.net/2023/Oct/17/open-questions/">Open questions for AI engineering</a></li>
+<li><a href="https://simonwillison.net/2023/Oct/23/embeddings/">Embeddings: What they are and why they matter</a></li>
+<li><a href="https://simonwillison.net/2023/Nov/10/universe/">Financial sustainability for open source projects at GitHub Universe</a></li>
+</ul>
+<p>And in podcasts:</p>
+<ul>
+<li>
+<a href="https://simonwillison.net/2023/Apr/2/what-ai-can-do-for-you/">What AI can do for you</a> on the Theory of Change</li>
+<li>
+<a href="https://simonwillison.net/2023/Apr/8/working-in-public/">Working in public</a> on Path to Citus Con</li>
+<li>
+<a href="https://simonwillison.net/2023/Apr/8/llms-break-the-internet/">LLMs break the internet</a> on the Changelog</li>
+<li>
+<a href="https://simonwillison.net/2023/Sep/29/llms-podcast/">Talking Large Language Models</a> on Rooftop Ruby</li>
+<li>
+<a href="https://simonwillison.net/2023/Nov/25/newsroom-robots/">Thoughts on the OpenAI board situation</a> on Newsroom Robots</li>
+<li>
+<a href="https://simonwillison.net/2023/Dec/20/mitigate-prompt-injection/">Industry’s Tardy Response to the AI Prompt Injection Vulnerability</a> on RedMonk Conversations</li>
+</ul>
+
+
+</div>
+<div class="entryFooter">Posted <a href="/2023/Dec/31/">31st December 2023</a> at 11:59 pm &middot; Follow me on <a href="https://fedi.simonwillison.net/@simon">Mastodon</a> or <a href="https://twitter.com/simonw">Twitter</a> or <a href="https://simonwillison.net/about/#subscribe">subscribe to my newsletter</a></div>
+
+</div>
+
+<div class="recent-articles">
+<h2>More recent articles</h2>
+<ul class="bullets">
+  
+    <li><a href="/2025/Feb/7/pip-install-llm-smollm2/">Using pip to install a Large Language Model that&#x27;s under 100MB</a> - 7th February 2025</li>
+  
+    <li><a href="/2025/Jan/31/o3-mini/">OpenAI o3-mini, now available in LLM</a> - 31st January 2025</li>
+  
+    <li><a href="/2025/Jan/24/selfish-open-source/">A selfish personal argument for releasing code as Open Source</a> - 24th January 2025</li>
+  
+</ul>
+</div>
+
+
+</div> <!-- #primary -->
+
+<div id="secondary">
+
+<div class="metabox">
+<p class="this-is">This is <strong>Stuff we figured out about AI in 2023</strong> by Simon Willison, posted on <a href="/2023/Dec/31/">31st December 2023</a>.</p>
+
+<div class="series-info">
+  <p>Part of series <strong><a href="/series/llms-annual-review/">LLMs annual review</a></strong></p>
+  <ol start="1">
+    
+      
+        <li><strong>Stuff we figured out about AI in 2023</strong></a> - Dec. 31, 2023, 11:59 p.m. </li>
+      
+    
+      
+        <li><a href="/2024/Dec/31/llms-in-2024/">Things we learned about LLMs in 2024</a> - Dec. 31, 2024, 6:07 p.m. </li>
+      
+    
+    
+  </ol>
+</div>
+
+
+    
+        <a class="item-tag" href="/tags/blogging/" rel="tag">
+            blogging
+            <span>68</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/ai/" rel="tag">
+            ai
+            <span>1092</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/generative-ai/" rel="tag">
+            generative-ai
+            <span>937</span>
+        </a>
+    
+        <a class="item-tag" href="/tags/llms/" rel="tag">
+            llms
+            <span>925</span>
+        </a>
+    
+
+
+<p><strong>Next:</strong> <a href="/2024/Jan/2/escalating-streaks/">Tom Scott, and the formidable power of escalating streaks</a></p>
+
+
+<p><strong>Previous:</strong> <a href="/2023/Dec/31/weeknotes/">Last weeknotes of 2023</a></p>
+
+<div data-ea-publisher="simonwillisonnet" data-ea-type="image"></div>
+</div>
+
+
+
+</div> <!-- #secondary -->
+</div> <!-- #wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+<div id="ft">
+    <ul>
+      <li><a href="/about/#about-site">Colophon</a></li>
+      <li>&copy;</li>
+      <li><a href="/2002/">2002</a></li>
+      <li><a href="/2003/">2003</a></li>
+      <li><a href="/2004/">2004</a></li>
+      <li><a href="/2005/">2005</a></li>
+      <li><a href="/2006/">2006</a></li>
+      <li><a href="/2007/">2007</a></li>
+      <li><a href="/2008/">2008</a></li>
+      <li><a href="/2009/">2009</a></li>
+      <li><a href="/2010/">2010</a></li>
+      <li><a href="/2011/">2011</a></li>
+      <li><a href="/2012/">2012</a></li>
+      <li><a href="/2013/">2013</a></li>
+      <li><a href="/2014/">2014</a></li>
+      <li><a href="/2015/">2015</a></li>
+      <li><a href="/2016/">2016</a></li>
+      <li><a href="/2017/">2017</a></li>
+      <li><a href="/2018/">2018</a></li>
+      <li><a href="/2019/">2019</a></li>
+      <li><a href="/2020/">2020</a></li>
+      <li><a href="/2021/">2021</a></li>
+      <li><a href="/2022/">2022</a></li>
+      <li><a href="/2023/">2023</a></li>
+      <li><a href="/2024/">2024</a></li>
+      <li><a href="/2025/">2025</a></li>
+    </ul>
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('h4[id],h5[id],h6[id]').forEach(el => {
+    const id = el.getAttribute('id');
+    const permalinkContext = el.closest('[data-permalink-context]');
+    if (permalinkContext) {
+      const url = permalinkContext.getAttribute('data-permalink-context');
+      const hashLink = document.createElement('a');
+      hashLink.style.borderBottom = 'none';
+      hashLink.style.color = '#666';
+      hashLink.style.fontSize = '1em';
+      hashLink.style.opacity = 0.8;
+      hashLink.setAttribute('href', url + '#' + id);
+      hashLink.innerText = '#';
+      el.appendChild(document.createTextNode(' '));
+      el.appendChild(hashLink);
+    }
+  });
+});
+</script>
+<script type="module">
+  const config = [
+    {"tag": "lite-youtube", "js": "/static/lite-yt-embed.js", "css": "/static/lite-yt-embed.css"}
+  ];
+  for (const {tag, js, css} of config) {
+    if (document.querySelector(tag)) {
+      if (css) {
+        document.head.appendChild(
+          Object.assign(document.createElement('link'), {
+            rel: 'stylesheet',
+            href: css
+          })
+        );
+      }
+      if (js) {
+        await import(js);
+      }
+    }
+  }
+</script>
+</body>
+</html>
