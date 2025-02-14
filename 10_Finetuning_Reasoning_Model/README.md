@@ -7,7 +7,7 @@
 
 | 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| [Session 10: Pre-Work](https://www.notion.so/Session-10-Fine-Tuning-LLM-Chat-Models-189cd547af3d80b3b460cdf16ceb212d?pvs=4#189cd547af3d81679890c02cf1812071)| [Session 10: Fine-Tuning LLM Chat Models](https://www.notion.so/Session-10-Fine-Tuning-LLM-Chat-Models-189cd547af3d80b3b460cdf16ceb212d) | Coming Soon! | Coming Soon!| Coming Soon!| Coming Soon! | [AIE5 Feedback 2/13](https://forms.gle/zQGUnYk5AYfp2v9r9) |
+| [Session 10: Pre-Work](https://www.notion.so/Session-10-Fine-Tuning-LLM-Chat-Models-189cd547af3d80b3b460cdf16ceb212d?pvs=4#189cd547af3d81679890c02cf1812071)| [Session 10: Fine-Tuning LLM Chat Models](https://www.notion.so/Session-10-Fine-Tuning-LLM-Chat-Models-189cd547af3d80b3b460cdf16ceb212d) | Coming Soon! | Coming Soon!| You Are Here! | Coming Soon! | [AIE5 Feedback 2/13](https://forms.gle/zQGUnYk5AYfp2v9r9) |
 
 In today's assignment, we'll be fine-tuning Llama 3.1 8B to create a reasoning model!
 
