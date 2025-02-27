@@ -7,7 +7,7 @@
 
 | 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| [Session 14: Pre-Work](https://www.notion.so/Session-14-Advanced-Agents-and-Reasoning-1a6cd547af3d800184c0c042fdb9dd73?pvs=4#1a6cd547af3d80ab9ddee9581538285c)| [Session 14: Advanced Agents and Reasoning](https://www.notion.so/Session-14-Advanced-Agents-and-Reasoning-1a6cd547af3d800184c0c042fdb9dd73) | [Recording](https://us02web.zoom.us/rec/share/9Sz-sPJXUr0iwCf8R-USY1ZLEHRdbcMOFxt56gSWBRzDFvjIKzGAQZQdHOMsBs63.CdqdFofBwGLvbXVM) (cdcnn@6i) | [Session 14: Advanced Agents and Reasoning](https://www.canva.com/design/DAGgVdCtgo0/iQk-xEO-rabxxaetUmHBeg/edit?utm_content=DAGgVdCtgo0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)| [14_Open_DeepResearch](https://github.com/AI-Maker-Space/AIE5/tree/main/14_Open_DeepResearch)| [Session 14: Advanced Agents and Reasoning](https://forms.gle/h8FZhB9WPQMXLFV1A)| [AIE5 Feedback 2/27](https://forms.gle/P1YcBPZuF6bhukU9A) |
+| [Session 14: Pre-Work](https://www.notion.so/Session-14-Advanced-Agents-and-Reasoning-1a6cd547af3d800184c0c042fdb9dd73?pvs=4#1a6cd547af3d80ab9ddee9581538285c)| [Session 14: Advanced Agents and Reasoning](https://www.notion.so/Session-14-Advanced-Agents-and-Reasoning-1a6cd547af3d800184c0c042fdb9dd73) | Coming Soon! | Coming Soon!| You Are Here! | Coming Soon!| [AIE5 Feedback 2/27](https://forms.gle/P1YcBPZuF6bhukU9A) |
 
 ### Steps to Run:
 
@@ -20,6 +20,8 @@ Run the notebook and complete the following:
 
 - 🤝 Breakout Room Part #1
   - Work through Deep Research Implementation
+- 🤝 Breakout Room Part #2
+  - Activity: Evaluate with Ragas
 
 # Ship 🚢
 
