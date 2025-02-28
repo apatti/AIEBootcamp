@@ -20,8 +20,6 @@ Run the notebook and complete the following:
 
 - 🤝 Breakout Room Part #1
   - Work through Deep Research Implementation
-- 🤝 Breakout Room Part #2
-  - Activity: Evaluate with Ragas
 
 # Ship 🚢
 
