@@ -1,0 +1,25 @@
+[project]
+name = "15-open-source-endpoints"
+version = "0.1.0"
+description = "Session 15 - Open Source Endpoints"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "asyncio===3.4.3",
+    "chainlit==2.2.1",
+    "huggingface-hub==0.27.0",
+    "langchain-huggingface==0.1.2",
+    "langchain==0.3.19",
+    "langchain-community==0.3.18",
+    "langsmith==0.3.11",
+    "python-dotenv==1.0.1",
+    "tqdm==4.67.1",
+    "langchain-openai==0.3.7",
+    "langchain-text-splitters==0.3.6",
+    "jupyter>=1.1.1",
+    "faiss-cpu>=1.10.0",
+    "websockets>=15.0",
+]
+
+[tool.uv.workspace]
+members = ["Application_Start"]
