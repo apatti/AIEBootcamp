@@ -9,7 +9,8 @@
 
 | 🤓 Pre-work | 📰 Session Sheet | ⏺️ Recording     | 🖼️ Slides        | 👨‍💻 Repo         | 📝 Homework      | 📁 Feedback       |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| [Session 15: Pre-Work](https://www.notion.so/Session-15-Intro-to-Production-and-Open-Source-Endpoints-189cd547af3d80168768dc2a8e18cfed?pvs=4#189cd547af3d816b8edce736371f4e47)| [Session 15: Intro to Production and Open-Source Endpoints](https://www.notion.so/Session-15-Intro-to-Production-and-Open-Source-Endpoints-189cd547af3d80168768dc2a8e18cfed) | Coming Soon! | Coming Soon! | You Are Here! | Coming Soon! | [AIE5 Feedback 3/4](https://forms.gle/gMZfY2oHmeYMhWmn6) |
+| [Session 15: Pre-Work](https://www.notion.so/Session-15-Intro-to-Production-and-Open-Source-Endpoints-189cd547af3d80168768dc2a8e18cfed?pvs=4#189cd547af3d816b8edce736371f4e47)| [Session 15: Intro to Production and Open-Source Endpoints](https://www.notion.so/Session-15-Intro-to-Production-and-Open-Source-Endpoints-189cd547af3d80168768dc2a8e18cfed) | [Recording](https://us02web.zoom.us/rec/share/yyfRWpLirOF5dG7x7bPq-nDAMMl_7A9NrJezZ1lOYzV_pnXx2DqewqjjN6TO9g66.nzdC7HDNKuLkKBgz) (t.x40jww) | [Session 15: Deploying Production Endpoints](https://www.canva.com/design/DAGgzHilCCM/V1mncJGrJ_2LhpADDxKvRQ/edit?utm_content=DAGgzHilCCM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) |You Are Here!| [Session 15 Assignment: Intro to Production and Open-Source Endpoints](https://forms.gle/ii1LNb2oxuHhH1xd9) | [AIE5 Feedback 3/4](https://forms.gle/gMZfY2oHmeYMhWmn6) |
+
 
 
 In today's assignment, we'll be creating an Open Source LLM-powered LangChain RAG Application in Chainlit.
